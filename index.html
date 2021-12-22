@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Netflex || The Movie Database</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <a href="/" class="logo">
+          <img
+            src="assets/img/logo/logo.svg"
+            width="154"
+            height="20"
+            alt="moviezone"
+          />
+        </a>
+        <ul class="nav__items">
+          <li class="nav__item">
+            <a href="#" class="nav__link">movies</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">TV shows</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">people</a>
+          </li>
+          <li class="nav__item">
+            <a href="#" class="nav__link">more</a>
+          </li>
+        </ul>
+        <div class="nav__options">
+          <a href="#" class="new__btn">
+            <span class="icon plus white"></span>
+          </a>
+          <a href="#" class="translate">
+            <span>en</span>
+          </a>
+          <a href="#" class="bell__btn">
+            <span class="icon bell"></span>
+          </a>
+          <a href="#" class="profile__btn">
+            <span class="avatar">s</span>
+          </a>
+          <a href="#" class="search__btn">
+            <span class="icon search"></span>
+          </a>
+        </div>
+      </nav>
+      <div class="hero">
+        <h1 class="hero__content">
+          <span>welcome.</span> <br />
+          <span
+            >Millions of movies, TV shows and people to discover. Explore
+            now.</span
+          ><br />
+        </h1>
+        <form
+          id="search__form"
+          class="search__form"
+          method="GET"
+          accept-charset="utf-8"
+        >
+          <label for="search__movie">
+            <input
+              type="month"
+              id="search__movie"
+              name="query"
+              class="search__input"
+              placeholder="Search for a movie, tv show, person......"
+              value
+            />
+          </label>
+          <input class="submit__btn" type="submit" value="search" />
+        </form>
+      </div>
+    </header>
+    <section>
+      <div class="row">
+        <h2>what's popular</h2>
+      </div>
+      <div class="row">
+        <div class="popular__movies">
+          <div class="card">
+            <img
+              height="250"
+              src="./assets/img/icons/img-thumbnail.svg"
+              alt="moviezone"
+            />
+          </div>
+          <div class="card">
+            <img
+              height="250"
+              src="./assets/img/icons/img-thumbnail.svg"
+              alt="moviezone"
+            />
+          </div>
+          <div class="card">
+            <img
+              height="250"
+              src="./assets/img/icons/img-thumbnail.svg"
+              alt="moviezone"
+            />
+          </div>
+          <div class="card">
+            <img
+              height="250"
+              src="./assets/img/icons/img-thumbnail.svg"
+              alt="moviezone"
+            />
+          </div>
+          <div class="card">
+            <img
+              height="250"
+              src="./assets/img/icons/img-thumbnail.svg"
+              alt="moviezone"
+            />
+          </div>
+          <div class="card">
+            <img
+              height="250"
+              src="./assets/img/icons/img-thumbnail.svg"
+              alt="moviezone"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <script defer type="module" src="./js/router.js"></script>
+  </body>
+</html>
