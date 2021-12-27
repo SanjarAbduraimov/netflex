@@ -5,10 +5,102 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
+      integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./css/profile.css" />
   </head>
   <body>
-    <h1>profile</h1>
-
-    <script type="module" src="./js/router.js"></script>
+    <section class="main_profile">
+      <div class="container">
+        <div class="row p-5 ">
+          <div class="col-2">
+            <a href="#"> <img src="https://www.vuescript.com/wp-content/uploads/2018/11/Show-Loader-During-Image-Loading-vue-load-image.png" width="100%"  alt="" /></a>
+          </div>
+          <div class="col-8">
+            <div class="row">
+              <h2 class="profile_name" style="display: inline-block;">Akhmedova</h2>
+              <p class="membership" style="display: inline-block;">Member since December 2021</p>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="percent">0%</div>
+                <p class="percent_name">Average Movie Score</p>
+              </div>
+              <div class="col-6">
+                <div class="percent">0%</div>
+                <p class="percent_name">Average Movie Score</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid">
+        <ul class="main_menu">
+          <div class="center">
+            <li class="_navitem">
+              <a href="#" class="_navlink"
+                >Overview <i class="fa fa-caret-down"></i
+              ></a>
+              <div class="_submenu">
+                <ul>
+                  <li><a href="">Main</a></li>
+                  <li><a href="">Favourites</a></li>
+                  <div class="fav_menu">
+                    <ul>
+                      <li><a href="">Movies</a></li>
+                      <li><a href="">TV Shows</a></li>
+                    </ul>
+                  </div>
+                  <li><a href="">Recommendations</a></li>
+                  <div class="rec_menu">
+                    <ul>
+                      <li><a href="">Movies</a></li>
+                      <li><a href="">TV Shows</a></li>
+                    </ul>
+                  </div>
+                  <li><a href="">Edit profile</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="_navitem">
+              <a href="#" class="_navlink">Discussions</a>
+            </li>
+            <li class="_navitem">
+              <a href="#" class="_navlink">Lists</a>
+            </li>
+            <li class="_navitem">
+              <a href="#" class="_navlink"
+                >Ratings <i class="fa fa-caret-down"></i
+              ></a>
+              <div class="_submenu">
+                <ul>
+                  <li><a href="">Movies</a></li>
+                  <li><a href="">TV Shows</a></li>
+                </ul>
+              </div>
+            </li>
+            <li class="_navitem">
+              <a href="#" class="_navlink"
+                >Watchlist <i class="fa fa-caret-down"></i
+              ></a>
+              <ul class="_submenu">
+                <li><a href="">Movies</a></li>
+                <li><a href="">TV Shows</a></li>
+              </ul>
+            </li>
+          </div>
+        </ul>
+      </div>
+    </section>
   </body>
 </html>
