@@ -1,0 +1,202 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+$colorheader : #032541;
+html{
+    size: 62.4%;
+    font-family: sans-serif;
+}
+.container{
+    padding: 0 10rem;
+}
+.containerplus{
+    padding: 0 8rem;
+}
+.upheader{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    // overflow: hidden;
+    background-color: $colorheader;
+    display: flex;
+    height: 100px;
+    line-height: 100px;
+    .logo{
+        width: 20%;
+        img{
+            width: 100%
+        }
+        margin-right: 5rem;
+        margin-top: .5rem;
+    }
+    ._navlist{
+        display: flex;
+        width: 30%;
+        align-items: center;
+        justify-content: space-between;
+        margin-right: 20rem;
+        list-style: none;
+        ._navitem{
+            position: relative;
+            a{
+                text-decoration: none;
+                color: #FFF;
+                font-weight: bold;
+                font-size: 1rem;
+            }
+            ._submenu{
+                display: none;
+                background-color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                width: max-content;
+                ul{
+                    list-style: none;
+                    li{
+                        padding: .5rem 0;
+                    }
+                }
+                a{
+                    color: black;
+                    font-weight: normal;
+                }
+            }
+            &:hover ._submenu{
+                display: inline-block;
+                position: absolute;
+                line-height: normal;
+                left: -5px;
+                top: 5rem;
+            }
+        }
+    }
+    .logs{
+        display: flex;
+        list-style: none;
+        width: 30%;
+        align-items: center;
+        justify-content: space-between;
+        ._logs{
+            position: relative;
+            .plus{
+                // display: none;
+                position: absolute;
+                right: -10rem;
+                display: none;
+                top: 5rem;
+                background-color: #fff;
+                padding: 1rem 2rem;
+                border-radius: 10px;
+                width: 20rem;
+                line-height: normal;
+            }
+            &:active .plus{
+                display: inline-block;
+
+            }
+
+        }
+        a{
+            text-decoration: none;
+            color: #FFF;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+    }
+}
+.bottomheader{
+    height: 25rem;
+    border: 1px  solid black;
+    background: linear-gradient(45deg,rgba(0, 0, 248, 0.459),rgba(0, 0, 248, 0.459)), url('https://www.themoviedb.org/t/p/original/ekZobS8isE6mA53RAiGDG93hBxL.jpg');
+    background-size: cover;
+    background-position:center;
+    padding-top: 5rem;
+    margin-top: 5rem;
+    h1{ 
+        font-size: 3rem;
+        color: #fff;
+    }
+    h3{
+        font-size: 2rem;
+        color: #fff;
+    }
+    .search_input{
+        margin-top: 5rem;
+        padding: 1rem 2rem;
+        width: 90%;
+        border-radius: 5rem;
+        border: none;
+        font-size: 1.2rem;
+    }
+    .search_input::placeholder{
+        font-size: 1.2rem;
+        
+    }
+    .search_input:focus{
+        outline: none;
+    }
+    .search_btn{
+        cursor: pointer;
+        padding: 1rem 2rem;
+        border: none;
+        font-size: 1.2rem;
+        border-radius: 5rem;
+        margin-left: -5rem;
+        background: linear-gradient(to right, rgba(30,213,169, 1) 0%, rgba(1,180,228, 1) 100%);
+    }
+
+}
+footer{
+    background-color: $colorheader;
+    height: 25rem;
+
+    
+    .left{
+        float: left;
+        position: relative;
+        padding-top: 4rem;
+        max-width: 30%;
+        text-align: right;
+        height: 20rem;
+        margin-left: 3rem;
+        img{
+            width: 50%;
+        }
+        a{
+            display: block;
+            margin-top: 3rem;
+            padding: 1rem 2.5rem;
+            background-color: #fff;
+            position: absolute;
+            right: 0;
+            border-radius: .5rem;
+            text-decoration: none;
+            font-weight: bold;
+            color: rgba(1,180,228, 1);
+            text-align: center;
+            
+        }
+    }
+    ul{
+        float: left;
+        margin-top: 5rem;
+        margin-left: .8rem;
+        list-style: none;
+        .th{
+            a{
+                font-size: 1.2rem;
+                font-weight: bolder;
+            }
+        }
+        li{
+            padding: .1rem;
+            a{
+                font-size: 1rem;
+                text-decoration: none;
+                color: #fff;
+            }
+        }
+    }
+}
