@@ -28,8 +28,8 @@ function displayData(data) {
 
 function getMovie(e){
   history.pushState({id : e.dataset.id}, "title", "/details.html")
-  console.log(history.pushState);
-  location.assign(`/details.html `)
+  // console.log(history.pushState);
+  location.assign(`/movie.html`)
 }
 
 
