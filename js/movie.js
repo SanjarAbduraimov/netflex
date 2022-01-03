@@ -1,26 +1,25 @@
-let row = document.querySelector(".row");
-let card = document.querySelector(".series");
-let fon = document.querySelector(".hero")
-let  query = new URLSearchParams(location.search);
-let queryId = Object.fromEntries(query.entries());
-const urls = `https://api.themoviedb.org/3/movie/${queryId.id}?api_key=08469cc05756c025bdd37cef5cd82c74&language=en-US`;
-const urlscredits = `https://api.themoviedb.org/3/movie//${queryId.id}/credits?api_key=08469cc05756c025bdd37cef5cd82c74&language=en-US`;
+import configs from "./config.js";
+const { apiKey, baseUrl, imgUrl } = configs;
 
-async function fetchFunction() {
+export async function fetchMovie(id) {
+  const urls = `${baseUrl}/${id}?api_key=${apiKey}&language=en-US`;
+
   const res = await fetch(urls);
   const data = await res.json();
-  console.log(data);
   return data;
 }
-async function fetchFunctions() {
-  const res = await fetch(urlscredits);
-  const urlscreditsData = await res.json();
-  console.log(urlscreditsData);
-  return urlscreditsData;
+export async function fetchCredits(id) {
+  const creditsUrl = `${baseUrl}${id}/credits?api_key=${apiKey}&language=en-US`;
+
+  const res = await fetch(creditsUrl);
+  const data = await res.json();
+  return data;
 }
-function displayurlscreditsData(urlscreditsData) {
+export function displayCreditsData(creditsData) {
+  let card = document.querySelector(".series");
+
   let htmlContents = "";
-  urlscreditsData.cast.forEach((movie) => {
+  creditsData.cast.forEach((movie) => {
     htmlContents += `
     <li class="card">
     <div class="card-body p-0" data-id="${movie.id}">
@@ -28,7 +27,7 @@ function displayurlscreditsData(urlscreditsData) {
     <img
       onclick="clickDetails(this)"
       class="card-img"
-      src="https://image.tmdb.org/t/p/w500/${movie.profile_path}"
+      src="${imgUrl}${movie.profile_path}"
       alt="series-img"
     />
     </a>
@@ -47,8 +46,9 @@ function displayurlscreditsData(urlscreditsData) {
   card.innerHTML = htmlContents;
 }
 
-// fon.style.background = url(`https://image.tmdb.org/t/p/w500/${data.poster_path}`)
-function displayData(data) {
+export function displayData(data) {
+  let row = document.querySelector(".row");
+
   let htmlContent = `<div class="col-4">
   <a href="#">
     <img
@@ -79,7 +79,10 @@ function displayData(data) {
     <li class="list-unstyled me-1">
       <a class="text-light" href="#"> ${data.genres[2].name}, </a>
     </li>
-    <li class="ms-4 text-light">${String(data.runtime / 60).slice(0,String(data.runtime / 60).indexOf('.')) }h ${data.runtime % 60}m</li>
+    <li class="ms-4 text-light">${String(data.runtime / 60).slice(
+      0,
+      String(data.runtime / 60).indexOf(".")
+    )}h ${data.runtime % 60}m</li>
   </ul>
   <ul class="hero__actions d-flex align-items-center list-unstyled">
     <li class="percent d-flex align-items-center me-4">
@@ -150,17 +153,16 @@ function displayData(data) {
   row.innerHTML = htmlContent;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetchFunction().then((data) => {
-    displayData(data);
-  });
-  fetchFunctions().then((data) => {
-    displayurlscreditsData(data);
-  });
-});
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetchFunction().then((data) => {
+//     displayData(data);
+//   });
+//   fetchFunctions().then((data) => {
+//     displayurlscreditsData(data);
+//   });
+// });
 
-
-function clickDetails(e) {
+export function clickDetails(e) {
   movId = e.parentElement.dataset.id;
-  location.assign("details.html?id=" + movId)
+  location.assign("details.html?id=" + movId);
 }
