@@ -11,10 +11,10 @@ async function fetchPopularMovies() {
 
 function displayData(data) {
   let htmlContent = "";
-  console.log(data);
   data.results.forEach((movie) => {
-    htmlContent += `<div class="card" data-id="${movie.id}" onclick="getMovie(this)">
+    htmlContent += `<div class="card" data-id = "${movie.id} ">
       <img
+        onclick="clickMovie(this)"
         height="250"
         src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
         alt="moviezone"
@@ -25,18 +25,22 @@ function displayData(data) {
   popularMoviesDom.innerHTML = htmlContent;
 }
 
-
-function getMovie(e){
-  history.pushState({id : e.dataset.id}, "title", "/details.html")
-  // console.log(history.pushState);
-  location.assign(`/movie.html`)
+function setCoverBg(img) {
+  heroDom.style.setProperty(
+    "--coverBg",
+    `url(https://image.tmdb.org/t/p/w500/${img})`
+  );
 }
 
-
 document.addEventListener("DOMContentLoaded", () => {
-
   fetchPopularMovies().then((data) => {
     displayData(data);
+    setCoverBg(data.results[0].backdrop_path);
   });
 });
+
+function clickMovie(e) {
+  movId = e.parentElement.dataset.id;
+  location.assign("movie.html?id=" + movId)
+}
 
