@@ -1,7 +1,7 @@
 const popularMoviesDom = document.querySelector(".popular__movies");
 const heroDom = document.querySelector(".hero");
 
-const url = `https://api.themoviedb.org/3/movie/popular?api_key=7014e2cdb739f65a296e51932f359f53&language=en-US&page=1`;
+const url = `https://api.themoviedb.org/3/movie/popular/?api_key=7014e2cdb739f65a296e51932f359f53&language=en-US&page=1`;
 
 async function fetchPopularMovies() {
   const res = await fetch(url);
@@ -13,7 +13,7 @@ function displayData(data) {
   let htmlContent = "";
   console.log(data);
   data.results.forEach((movie) => {
-    htmlContent += `<div class="card">
+    htmlContent += `<div class="card" data-id="${movie.id}" onclick="getMovie(this)">
       <img
         height="250"
         src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
@@ -25,16 +25,18 @@ function displayData(data) {
   popularMoviesDom.innerHTML = htmlContent;
 }
 
-function setCoverBg(img) {
-  heroDom.style.setProperty(
-    "--coverBg",
-    `url(https://image.tmdb.org/t/p/w500/${img})`
-  );
+
+function getMovie(e){
+  history.pushState({id : e.dataset.id}, "title", "/details.html")
+  console.log(history.pushState);
+  location.assign(`/details.html `)
 }
 
+
 document.addEventListener("DOMContentLoaded", () => {
+
   fetchPopularMovies().then((data) => {
     displayData(data);
-    setCoverBg(data.results[0].backdrop_path);
   });
 });
+
