@@ -1,12 +1,11 @@
 const popularMoviesDom = document.querySelector(".popular__movies");
 const heroDom = document.querySelector(".hero");
-let movId;
-const url = `https://api.themoviedb.org/3/movie/popular?api_key=08469cc05756c025bdd37cef5cd82c74&language=en-US&page=1`;
+
+const url = `https://api.themoviedb.org/3/movie/popular/?api_key=7014e2cdb739f65a296e51932f359f53&language=en-US&page=1`;
 
 async function fetchPopularMovies() {
   const res = await fetch(url);
   const data = await res.json();
-  console.log(data);
   return data;
 }
 
