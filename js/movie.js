@@ -1,5 +1,7 @@
 let heroImg = document.querySelector(".hero__img");
-const url = `https://api.themoviedb.org/3/movie/6a3365f259717027cd77969d5a0bf8b2f85347c4?api_key=e73f1beef4c6f7e3179582f971655d86&language=en-US`;
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+const url = `https://api.themoviedb.org/3/movie/${params.id}?api_key=e73f1beef4c6f7e3179582f971655d86&language=en-US`;
 
 async function fetchFunction() {
   const res = await fetch(url);

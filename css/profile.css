@@ -1,49 +1,89 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
-  
+
 html {
-    size: 62.4%;
-    font-family: sans-serif;
+  size: 62.4%;
+  font-family: sans-serif;
+}
+.main_profile {
+  background-color: rgba(13, 13, 80, 0.986);
+  color: white;
+}
+.main_menu {
+  list-style: none;
+  border-bottom: 1px solid;
+  border-top: 1px solid;
+}
+.percent{
+    background-color: rgba(0, 0, 0, 0.61);
+    padding: 15px;
+    border: 1px solid;
+    border-radius: 50%;
+}
+.center {
+  margin-left: 30%;
+}
+.profile_pic {
+  border-radius: 50%;
+}
+li {
+  text-decoration: none;
+  list-style: none;
+}
+._navitem {
+  display: inline-block;
+  padding: 10px;
 }
 
-.main_menu{
+._navlink {
+  text-decoration: none;
+  color: black;
+  padding-bottom: 9px;
+  border-bottom: 3px hidden;
+}
+._navlink:hover {
+  border-bottom: 3px solid chocolate;
+  color: rgba(0, 0, 0, 0.418);
+}
+#dropdown_menu {
+  position: relative;
+}
+#dropdown_menu:hover + ._submenu {
+  position: absolute;
+  left: 30%;
+  display: block;
+  border: 1px solid;
+  background-color: white;
+  padding: 15px;
+}
+._submenu {
+  display: none;
+  text-decoration: none;
+}
+._submenu li{
     list-style: none;
-    border-bottom: 1px solid;
-    border-top: 1px solid;
-}
-.center{
-    margin-left: 30%;
-}
-
-li{
     text-decoration: none;
-    list-style: none;
 }
-._navitem{
-    display: inline-block;
-    padding: 10px;
+.fav_menu {
+  display: none;
 }
-
-._navlink{
-    text-decoration: none;
-    color: black;
-    padding-bottom: 9px ;
-    border-bottom: 3px hidden;
-}
-._navlink:hover{
-    border-bottom: 3px solid chocolate;
-    color: rgba(0, 0, 0, 0.418);
+.rec_menu {
+  display: none;
 }
 
-._submenu{
-    display: none;
+.content{
+    display: flex;
+    flex-direction: column;
 }
-.fav_menu{
-    display: none;
+.stat_blocks{
+    display: flex;
 }
-.rec_menu{
-    display: none   ;
+
+.edit_data{
+    color: orange;
+    font-size: 50px;
+    font-weight: 700;
 }
