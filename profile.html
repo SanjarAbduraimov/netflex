@@ -24,7 +24,7 @@
       <div class="container">
         <div class="row p-5 ">
           <div class="col-2">
-            <a href="#"> <img src="https://www.vuescript.com/wp-content/uploads/2018/11/Show-Loader-During-Image-Loading-vue-load-image.png" width="100%"  alt="" /></a>
+            <a href="#"> <img class="profile_pic" src="https://www.vuescript.com/wp-content/uploads/2018/11/Show-Loader-During-Image-Loading-vue-load-image.png" width="100%" height="100%"  alt="" /></a>
           </div>
           <div class="col-8">
             <div class="row">
@@ -32,11 +32,11 @@
               <p class="membership" style="display: inline-block;">Member since December 2021</p>
             </div>
             <div class="row">
-              <div class="col-6">
+              <div class="col-6 d-flex">
                 <div class="percent">0%</div>
                 <p class="percent_name">Average Movie Score</p>
               </div>
-              <div class="col-6">
+              <div class="col-6 d-flex">
                 <div class="percent">0%</div>
                 <p class="percent_name">Average Movie Score</p>
               </div>
@@ -44,11 +44,13 @@
           </div>
         </div>
       </div>
+    </section>
+    <section>
       <div class="container-fluid">
         <ul class="main_menu">
           <div class="center">
             <li class="_navitem">
-              <a href="#" class="_navlink"
+              <a href="#" class="_navlink" id="dropdown_menu"
                 >Overview <i class="fa fa-caret-down"></i
               ></a>
               <div class="_submenu">
@@ -100,6 +102,34 @@
             </li>
           </div>
         </ul>
+      </div>
+    </section>
+    <section class="account_page_data">
+      <div class="container">
+        <div class="inner_block">
+          <div class="inner_content">
+            <div class="content">
+              <h2>Stats</h2>
+              <div class="stat_blocks row">
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Total Edits</h3>
+                  <h2 class="edit_data">0</h2>
+                </div>
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Total Ratings</h3>
+                  <h2 class="edit_data">0</h2>
+                </div>
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Rating Overviews</h3>
+                </div>
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Most Watched Genres</h3>
+                  <p>You haven't logged any movies or TV shows</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   </body>

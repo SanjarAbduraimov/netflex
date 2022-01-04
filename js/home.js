@@ -1,22 +1,20 @@
-const popularMoviesDom = document.querySelector(".popular__movies");
-const heroDom = document.querySelector(".hero");
-
-const url = `https://api.themoviedb.org/3/movie/popular?api_key=7014e2cdb739f65a296e51932f359f53&language=en-US&page=1`;
-
-async function fetchPopularMovies() {
+import configs from "./config.js";
+const { baseUrl, apiKey, imgUrl } = configs;
+export async function fetchPopularMovies() {
+  const url = `${baseUrl}popular/?api_key=${apiKey}&language=en-US&page=1`;
   const res = await fetch(url);
   const data = await res.json();
   return data;
 }
 
-function displayData(data) {
+export function displayData(data) {
+  const popularMoviesDom = document.querySelector(".popular__movies");
   let htmlContent = "";
-  console.log(data);
   data.results.forEach((movie) => {
-    htmlContent += `<div class="card">
+    htmlContent += `<div class="card" data-id = "${movie.id} ">
       <img
         height="250"
-        src="https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+        src="${imgUrl}${movie.poster_path}"
         alt="moviezone"
       />
       <h3>${movie.title}</h3>
@@ -25,16 +23,25 @@ function displayData(data) {
   popularMoviesDom.innerHTML = htmlContent;
 }
 
-function setCoverBg(img) {
-  heroDom.style.setProperty(
-    "--coverBg",
-    `url(https://image.tmdb.org/t/p/w500/${img})`
-  );
+export function setCoverBg(img) {
+  const heroDom = document.querySelector(".hero");
+  heroDom.style.setProperty("--coverBg", `url(${imgUrl}${img})`);
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetchPopularMovies().then((data) => {
-    displayData(data);
-    setCoverBg(data.results[0].backdrop_path);
+// document.addEventListener("DOMContentLoaded", () => {
+//   fetchPopularMovies().then((data) => {
+//     displayData(data);
+//     setCoverBg(data.results[0].backdrop_path);
+//   });
+// });
+
+export function movieHandler() {
+  let movies = document.querySelectorAll(".card");
+  movies.forEach((movie) => {
+    movie.onclick = (e) => {
+      let id = e.target.parentElement.dataset.id;
+      history.pushState({ id }, "movie", "/movie.html");
+      location.reload();
+    };
   });
-});
+}
