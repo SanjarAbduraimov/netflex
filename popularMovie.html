@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Popular Movie</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/popularMovie.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <div class="container">
+        <div class="text-capitalize h4 my-4">popular movies</div>
+        <div class="row">
+          <div class="col-3">
+            <div class="filter__panel p-3 mb-3">
+              <div
+                class="filter__name text-capitalize fw-bold fs-5"
+                onclick="filterName()"
+                ondblclick="filterName2()"
+              >
+                <span> sort </span>
+                <span>
+                  <i class="fas fa-chevron-right fs-6 fw-bold"></i>
+                </span>
+              </div>
+              <div class="filter">
+                <div class="filter__item lead fs-6 mb-2">Sort Results By</div>
+                <select class="p-2 fs-6 w-100">
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="filter__panel p-3 mb-3">
+              <div
+                class="filter__name text-capitalize fw-bold fs-5"
+                onclick="filters()"
+                ondblclick="filters2()"
+              >
+                <span> filters </span>
+                <span>
+                  <i class="fas fa-chevron-right fs-6 fw-bold"></i>
+                </span>
+              </div>
+              <div class="filter filter2">
+                <div class="filter__item lead fs-6 mb-2">Show Me</div>
+                <select class="p-2 fs-6 w-100">
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                </select>
+              </div>
+            </div>
+            <div class="filter__panel p-3 mb-3">
+              <div
+                class="filter__name text-capitalize fw-bold fs-5"
+                onclick="toWatch()"
+                ondblclick="toWatch2()"
+              >
+                <span> where to watch </span>
+                <span>
+                  <i class="fas fa-chevron-right fs-6 fw-bold"></i>
+                </span>
+              </div>
+              <div class="filter filter3">
+                <div class="filter__item lead fs-6 mb-2">my services</div>
+                <select class="p-2 fs-6 w-100">
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                  <option value="popularityDescending">
+                    Popularity Descending
+                  </option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="hero__content col-9 d-flex flex-wrap justify-content-between">
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-1.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-2.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-3.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-4.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-5.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-6.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-6.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+            <div class="card mb-4">
+              <div class="card__img">
+                <img
+                  class="card__img-item w-100 h-100"
+                  src="./assets/img/movies/movie-8.jfif"
+                  alt="movie"
+                />
+              </div>
+              <div class="card__options">
+                <div class="card__options-item">
+                  <i class="fas fa-circle"></i>
+                  <i class="fas fa-ellipsis-h"></i>
+                </div>
+              </div>
+              <div class="card__link ms-3 mt-3">
+                <a
+                  class="card__link-item text-decoration-none fw-bold text-dark"
+                  href="#"
+                  >Resident Evil: Welcome to Raccoon City</a
+                >
+              </div>
+              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script defer src="./js/popularMovie.js"></script>
+  </body>
+</html>

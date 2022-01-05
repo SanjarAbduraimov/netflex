@@ -1,0 +1,77 @@
+.card {
+  width: 200px;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.card__options-item {
+  position: relative;
+}
+
+.card__options-item:hover .fa-circle {
+  color: rgb(4, 112, 235);
+}
+
+.card__options-item:hover .fa-ellipsis-h {
+  color: #fff;
+}
+
+.card__options-item .fa-circle {
+  position: absolute;
+  color: #fff;
+  font-size: 25px;
+  margin-left: 160px;
+  margin-top: -280px;
+}
+
+.card__options-item .fa-ellipsis-h {
+  position: absolute;
+  margin-top: -275px;
+  margin-left: 165px;
+}
+
+.card__link-item:hover {
+  color: #0d6efd;
+}
+
+.filter__panel {
+  min-width: 250px;
+  padding: 15px;
+  /* border: 1px solid; */
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 35%);
+}
+
+.filter__name {
+  display: flex;
+  justify-content: space-between;
+}
+
+.filter__name:hover {
+  cursor: pointer;
+}
+
+.filter {
+  display: none;
+}
+
+.filter::before {
+  content: "";
+  position: relative;
+  display: block;
+  width: 100%;
+  margin: 20px 0;
+  height: 0.1px;
+  background-color: rgba(0, 0, 0, 0.185);
+}
+
+.filter select {
+  background-color: #e4e7eb;
+  border: none;
+  border-radius: 4px;
+}
+
+.filter select option {
+  border-radius: 4px;
+  background-color: #fff;
+}
