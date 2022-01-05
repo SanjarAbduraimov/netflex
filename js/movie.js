@@ -1,5 +1,5 @@
-import configs from "./config.js";
-const { apiKey, baseUrl, imgUrl } = configs;
+import configs from "../config.js";
+const { API_KEY: apiKey, BACKEND_API: baseUrl, IMG_URL: imgUrl } = configs;
 
 export async function fetchMovie(id) {
   const urls = `${baseUrl}/${id}?api_key=${apiKey}&language=en-US`;

@@ -1,5 +1,5 @@
-import configs from "./config.js";
-const { baseUrl, apiKey, imgUrl } = configs;
+import configs from "../config.js";
+const { BACKEND_API: baseUrl, API_KEY: apiKey, IMG_URL: imgUrl } = configs;
 export async function fetchPopularMovies() {
   const url = `${baseUrl}popular/?api_key=${apiKey}&language=en-US&page=1`;
   const res = await fetch(url);

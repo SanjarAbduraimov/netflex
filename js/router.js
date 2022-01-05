@@ -1,5 +1,6 @@
 import * as home from "./home.js";
 import * as movie from "./movie.js";
+import * as displayPopularMovie from "./popularMovie.js";
 document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
@@ -15,6 +16,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
+    });
+  }
+  if (location.pathname === "/popularMovie.html") {
+    fetchPopularMovie().then((data) => {
+      displayPopularMovie(data);
     });
   }
 });
