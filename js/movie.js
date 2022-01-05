@@ -2,54 +2,48 @@ import configs from "./config.js";
 const { apiKey, baseUrl, imgUrl } = configs;
 
 export async function fetchMovie(id) {
-  const urls = `${baseUrl}/${id}?api_key=${apiKey}&language=en-US`;
-
-  const res = await fetch(urls);
-  const data = await res.json();
-  return data;
+    const urls = `${baseUrl}/${id}?api_key=${apiKey}&language=en-US`;
+    const res = await fetch(urls);
+    const data = await res.json();
+    return data;
 }
 export async function fetchCredits(id) {
-  const creditsUrl = `${baseUrl}${id}/credits?api_key=${apiKey}&language=en-US`;
-
-  const res = await fetch(creditsUrl);
-  const data = await res.json();
-  return data;
+    const creditsUrl = `${baseUrl}${id}/credits?api_key=${apiKey}&language=en-US`;
+    const res = await fetch(creditsUrl);
+    const data = await res.json();
+    return data;
 }
 export function displayCreditsData(creditsData) {
-  let card = document.querySelector(".series");
-
-  let htmlContents = "";
-  creditsData.cast.forEach((movie) => {
-    htmlContents += `
+    let card = document.querySelector(".series");
+    let htmlContents = "";
+    creditsData.cast.forEach((data) => {
+        htmlContents += `
     <li class="card">
-    <div class="card-body p-0" data-id="${movie.id}">
-    <a href="#">
+    <div class="card-body p-0" data-id="${data.id}">
     <img
-      onclick="clickDetails(this)"
       class="card-img"
-      src="${imgUrl}${movie.profile_path}"
+      src="${imgUrl}${data.profile_path}"
       alt="series-img"
     />
-    </a>
     <div class="ms-2 card-title fw-bold mb-0">
       <a
         class="text-decoration-none text-dark mt-2 d-inline-block"
         href="#"
       >
-        ${movie.original_name}
+        ${data.original_name}
       </a>
     </div>
-    <p class="card-text ms-2 card-text mb-0">${movie.character}</p>
+    <p class="card-text ms-2 card-text mb-0">${data.character}</p>
   </div>
   </li>`;
-  });
-  card.innerHTML = htmlContents;
+    });
+    card.innerHTML = htmlContents;
 }
 
 export function displayData(data) {
-  let row = document.querySelector(".row");
+    let row = document.querySelector(".row");
 
-  let htmlContent = `<div class="col-4">
+    let htmlContent = `<div class="col-4">
   <a href="#">
     <img
       class="hero__img w-100"
@@ -150,19 +144,25 @@ export function displayData(data) {
     <p class="text-light">Creator</p>
   </div>
 </div>`;
-  row.innerHTML = htmlContent;
+    row.innerHTML = htmlContent;
 }
 
 // document.addEventListener("DOMContentLoaded", () => {
-//   fetchFunction().then((data) => {
-//     displayData(data);
-//   });
-//   fetchFunctions().then((data) => {
-//     displayurlscreditsData(data);
-//   });
+//     fetchFunction().then((data) => {
+//         displayData(data);
+//     });
+//     fetchFunctions().then((data) => {
+//         displayurlscreditsData(data);
+//     });
 // });
 
-export function clickDetails(e) {
-  movId = e.parentElement.dataset.id;
-  location.assign("details.html?id=" + movId);
+export function movieHandler() {
+    let movies = document.querySelectorAll(".card-body");
+    movies.forEach((movie) => {
+        movie.onclick = (e) => {
+            let id = e.target.parentElement.dataset.id;
+            history.pushState({ id }, "detail", "/details.html");
+            location.reload();
+        };
+    });
 }
