@@ -1,6 +1,6 @@
 import * as home from "./home.js";
 import * as movie from "./movie.js";
-import * as displayPopularMovie from "./popularMovie.js";
+import { displayArtist, fetchArtist } from "./artist.js";
 document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
@@ -16,6 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
+      movie.artistHandler();
+    });
+  }
+  if (location.pathname === "/artist.html") {
+    fetchArtist().then((artist) => {
+      displayArtist(artist);
     });
   }
   if (location.pathname === "/popularMovie.html") {

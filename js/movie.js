@@ -1,45 +1,41 @@
-import configs from "../config.js";
-const { API_KEY: apiKey, BACKEND_API: baseUrl, IMG_URL: imgUrl } = configs;
+import configs from "../configs.js";
+const { API_KEY, BACKEND_API, IMG_URL } = configs;
 
 export async function fetchMovie(id) {
-  const urls = `${baseUrl}/${id}?api_key=${apiKey}&language=en-US`;
-
+  const urls = `${BACKEND_API}/movie/${id}?api_key=${API_KEY}&language=en-US`;
   const res = await fetch(urls);
   const data = await res.json();
   return data;
 }
 export async function fetchCredits(id) {
-  const creditsUrl = `${baseUrl}${id}/credits?api_key=${apiKey}&language=en-US`;
-
+  // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=7014e2cdb739f65a296e51932f359f53&language=en-US
+  const creditsUrl = `${BACKEND_API}movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
   const res = await fetch(creditsUrl);
   const data = await res.json();
+  console.log(data, "fetchMovie credits");
   return data;
 }
 export function displayCreditsData(creditsData) {
   let card = document.querySelector(".series");
-
   let htmlContents = "";
-  creditsData.cast.forEach((movie) => {
+  creditsData.cast.forEach((data) => {
     htmlContents += `
     <li class="card">
-    <div class="card-body p-0" data-id="${movie.id}">
-    <a href="#">
+    <div class="card-body p-0" data-id="${data.id}">
     <img
-      onclick="clickDetails(this)"
       class="card-img"
-      src="${imgUrl}${movie.profile_path}"
+      src="${IMG_URL}${data.profile_path}"
       alt="series-img"
     />
-    </a>
     <div class="ms-2 card-title fw-bold mb-0">
       <a
         class="text-decoration-none text-dark mt-2 d-inline-block"
         href="#"
       >
-        ${movie.original_name}
+        ${data.original_name}
       </a>
     </div>
-    <p class="card-text ms-2 card-text mb-0">${movie.character}</p>
+    <p class="card-text ms-2 card-text mb-0">${data.character}</p>
   </div>
   </li>`;
   });
@@ -153,16 +149,16 @@ export function displayData(data) {
   row.innerHTML = htmlContent;
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   fetchFunction().then((data) => {
-//     displayData(data);
-//   });
-//   fetchFunctions().then((data) => {
-//     displayurlscreditsData(data);
-//   });
-// });
-
-export function clickDetails(e) {
-  movId = e.parentElement.dataset.id;
-  location.assign("details.html?id=" + movId);
+export function artistHandler() {
+  let artists = document.querySelectorAll(".card-body");
+  artists.forEach((artist) => {
+    artist.onclick = (e) => {
+      let element = e.target;
+      let artistWrapperElement = element.closest("[data-id]");
+      let id = artistWrapperElement.dataset.id;
+      console.log(element, id);
+      history.pushState({ id }, "artist", "/artist.html");
+      location.reload();
+    };
+  });
 }

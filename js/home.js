@@ -1,7 +1,7 @@
-import configs from "../config.js";
-const { BACKEND_API: baseUrl, API_KEY: apiKey, IMG_URL: imgUrl } = configs;
+import configs from "../configs.js";
+const { BACKEND_API, API_KEY, IMG_URL } = configs;
 export async function fetchPopularMovies() {
-  const url = `${baseUrl}popular/?api_key=${apiKey}&language=en-US&page=1`;
+  const url = `${BACKEND_API}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`;
   const res = await fetch(url);
   const data = await res.json();
   return data;
@@ -14,7 +14,7 @@ export function displayData(data) {
     htmlContent += `<div class="card" data-id = "${movie.id} ">
       <img
         height="250"
-        src="${imgUrl}${movie.poster_path}"
+        src="${IMG_URL}${movie.poster_path}"
         alt="moviezone"
       />
       <h3>${movie.title}</h3>
@@ -25,7 +25,7 @@ export function displayData(data) {
 
 export function setCoverBg(img) {
   const heroDom = document.querySelector(".hero");
-  heroDom.style.setProperty("--coverBg", `url(${imgUrl}${img})`);
+  heroDom.style.setProperty("--coverBg", `url(${IMG_URL}${img})`);
 }
 
 // document.addEventListener("DOMContentLoaded", () => {
