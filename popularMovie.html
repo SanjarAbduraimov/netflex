@@ -25,7 +25,6 @@
               <div
                 class="filter__name text-capitalize fw-bold fs-5"
                 onclick="filterName()"
-                ondblclick="filterName2()"
               >
                 <span> sort </span>
                 <span>
@@ -55,9 +54,8 @@
             </div>
             <div class="filter__panel p-3 mb-3">
               <div
-                class="filter__name text-capitalize fw-bold fs-5"
+                class="filter__name filter__name-2 text-capitalize fw-bold fs-5"
                 onclick="filters()"
-                ondblclick="filters2()"
               >
                 <span> filters </span>
                 <span>
@@ -87,9 +85,8 @@
             </div>
             <div class="filter__panel p-3 mb-3">
               <div
-                class="filter__name text-capitalize fw-bold fs-5"
+                class="filter__name filter__name-3 text-capitalize fw-bold fs-5"
                 onclick="toWatch()"
-                ondblclick="toWatch2()"
               >
                 <span> where to watch </span>
                 <span>
@@ -97,28 +94,36 @@
                 </span>
               </div>
               <div class="filter filter3">
-                <div class="filter__item lead fs-6 mb-2">my services</div>
-                <select class="p-2 fs-6 w-100">
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                </select>
+                <div class="filter__item lead fs-6 mb-2 text-capitalize">
+                  <span> my services </span>
+                  <a class="text-dark ms-1" href="#">
+                    <i class="fas fa-pen-square"></i>
+                  </a>
+                </div>
+                <label class="d-flex" for="">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox"
+                  />
+                  <label for="searchCheckbox"
+                    >Restrict searches to my subscribed services?</label
+                  >
+                </label>
+                <hr>
+                <p class="text-capitalize">country</p>
               </div>
             </div>
+            <a
+              class="hero__link w-100 py-2 m-auto text-decoration-none text-capitalize fw-bold fs-5 d-flex align-items-center justify-content-center"
+              href="#"
+              >search</a
+            >
           </div>
-          <div class="hero__content col-9 d-flex flex-wrap justify-content-between">
+          <div
+            class="hero__content col-9 d-flex flex-wrap justify-content-between"
+          >
             <div class="card mb-4">
               <div class="card__img">
                 <img
@@ -304,9 +309,16 @@
               <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
             </div>
           </div>
+          <div class="d-flex justify-content-end mb-5">
+            <a
+              class="hero__content-link d-flex align-items-center text-decoration-none justify-content-center w-75 py-3 bg-primary text-capitalize text-white"
+              href="#"
+              >load more</a
+            >
+          </div>
         </div>
       </div>
     </section>
-    <script defer src="./js/popularMovie.js"></script>
+    <script defer type="module" src="./js/router.js"></script>
   </body>
 </html>
