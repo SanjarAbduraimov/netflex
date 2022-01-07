@@ -2,24 +2,24 @@ import configs from "../configs.js";
 const { API_KEY, BACKEND_API, IMG_URL } = configs;
 
 export async function fetchMovie(id) {
-  const urls = `${BACKEND_API}/movie/${id}?api_key=${API_KEY}&language=en-US`;
-  const res = await fetch(urls);
-  const data = await res.json();
-  return data;
+    const urls = `${BACKEND_API}/movie/${id}?api_key=${API_KEY}&language=en-US`;
+    const res = await fetch(urls);
+    const data = await res.json();
+    return data;
 }
 export async function fetchCredits(id) {
-  // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=7014e2cdb739f65a296e51932f359f53&language=en-US
-  const creditsUrl = `${BACKEND_API}movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
-  const res = await fetch(creditsUrl);
-  const data = await res.json();
-  console.log(data, "fetchMovie credits");
-  return data;
+    // https://api.themoviedb.org/3/movie/{movie_id}/credits?api_key=7014e2cdb739f65a296e51932f359f53&language=en-US
+    const creditsUrl = `${BACKEND_API}movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
+    const res = await fetch(creditsUrl);
+    const data = await res.json();
+    console.log(data, "fetchMovie credits");
+    return data;
 }
 export function displayCreditsData(creditsData) {
-  let card = document.querySelector(".series");
-  let htmlContents = "";
-  creditsData.cast.forEach((data) => {
-    htmlContents += `
+    let card = document.querySelector(".series");
+    let htmlContents = "";
+    creditsData.cast.forEach((data) => {
+        htmlContents += `
     <li class="card">
     <div class="card-body p-0" data-id="${data.id}">
     <img
@@ -38,14 +38,14 @@ export function displayCreditsData(creditsData) {
     <p class="card-text ms-2 card-text mb-0">${data.character}</p>
   </div>
   </li>`;
-  });
-  card.innerHTML = htmlContents;
+    });
+    card.innerHTML = htmlContents;
 }
 
 export function displayData(data) {
-  let row = document.querySelector(".row");
+    let row = document.querySelector(".row");
 
-  let htmlContent = `<div class="col-4">
+    let htmlContent = `<div class="col-4">
   <a href="#">
     <img
       class="hero__img w-100"
@@ -146,19 +146,19 @@ export function displayData(data) {
     <p class="text-light">Creator</p>
   </div>
 </div>`;
-  row.innerHTML = htmlContent;
+    row.innerHTML = htmlContent;
 }
 
 export function artistHandler() {
-  let artists = document.querySelectorAll(".card-body");
-  artists.forEach((artist) => {
-    artist.onclick = (e) => {
-      let element = e.target;
-      let artistWrapperElement = element.closest("[data-id]");
-      let id = artistWrapperElement.dataset.id;
-      console.log(element, id);
-      history.pushState({ id }, "artist", "/artist.html");
-      location.reload();
-    };
-  });
+    let artists = document.querySelectorAll(".card-body");
+    artists.forEach((artist) => {
+        artist.onclick = (e) => {
+            let element = e.target;
+            let artistWrapperElement = element.closest("[data-id]");
+            let id = artistWrapperElement.dataset.id;
+            console.log(element, id);
+            history.pushState({ id }, "artist", "/artist.html");
+            location.reload();
+        };
+    });
 }

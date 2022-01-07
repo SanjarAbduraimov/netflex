@@ -12,21 +12,13 @@
     max-width: 1200px;
 }
 
-.img {
-    border-radius: 2%;
-    height: 500px;
-}
-
-.col-9 {
-    color: #000;
-}
-
 .title {
     font-weight: bold;
     font-size: 35px;
 }
 
 .heading {
+    font-weight: bold;
     margin: 25px 0 10px 0;
     font-size: 22px;
 }
@@ -95,25 +87,74 @@ h3 {
 }
 
 .horizontal {
-    overflow-y: hidden;
-    overflow-x: scroll;
     display: flex;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    width: auto;
+    height: 320px;
+    margin-bottom: 50px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
 }
 
 .horizontal li {
     margin-top: 20px;
     list-style: none;
-}
-
-.horizontal li:first-child {
-    margin-left: 0;
+    margin-left: 12px;
 }
 
 .horizontal img {
     width: 130px;
     border-radius: 10px;
-    margin-left: 12px;
+}
+
+ul {
+    padding-left: 0;
+}
+
+.horizontal .img__title {
+    text-align: center;
+    font-size: 14px;
+}
+
+.img__title:hover {
+    color: #01b4e4;
+}
+
+.movie__credit {
+    margin-right: 0;
+}
+
+.acting .shadow {
+    padding: 10px 20px;
+}
+
+.names {
+    margin-right: 200px;
+    margin-bottom: 50px;
+}
+
+.others .shadow {
+    padding: 10px;
+}
+
+.others .movie__title {
+    margin: 10px 0;
+}
+
+.movie__title {
+    padding-top: 0;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+    margin: 20px 0;
+}
+
+.movie__title:hover {
+    color: #01b4e4;
+    cursor: pointer;
+}
+
+.movie__character {
+    font-weight: 400;
+    font-size: 15px;
+    color: #424141;
 }
