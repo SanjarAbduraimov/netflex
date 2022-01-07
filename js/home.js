@@ -28,13 +28,6 @@ export function setCoverBg(img) {
     heroDom.style.setProperty("--coverBg", `url(${IMG_URL}${img})`);
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//   fetchPopularMovies().then((data) => {
-//     displayData(data);
-//     setCoverBg(data.results[0].backdrop_path);
-//   });
-// });
-
 export function movieHandler() {
     let movies = document.querySelectorAll(".card");
     movies.forEach((movie) => {
