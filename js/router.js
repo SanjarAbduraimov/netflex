@@ -2,6 +2,7 @@ import * as home from "./home.js";
 import * as movie from "./movie.js";
 import { displayArtist, fetchArtist } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
