@@ -67,7 +67,7 @@ export function displayData(data) {
 
     console.log(data);
 
-    data ? .genres.forEach((genre) => {
+    data?.genres.forEach((genre) => {
         movieGenres.innerHTML += `
       <li class="list-unstyled me-1">
         <a class="text-light" href="#" data-id="${genre.id}">
