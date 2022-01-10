@@ -20,9 +20,7 @@ async function DisplayDetails(data) {
 }
 
 
-async function activating() {
-  
-}
+
 document.addEventListener("DOMContentLoaded", () => {
   fetchDetailsData().then((data)=>{
       DisplayDetails(data)
