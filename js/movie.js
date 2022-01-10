@@ -13,6 +13,46 @@ export async function fetchCredits(id) {
     const data = await res.json();
     return data;
 }
+export async function markAsFavouriteRequest(id) {
+    const markAsFavouriteUrl = `https://api.themoviedb.org/3/account/{account_id}/favorite?api_key=9b5df320c81a1edb3c2c87fa739ff2f2&session_id=76c6c3a4038803680876b2490f0b4bafd214b5f7`
+    const bodyData = {
+        media_type: "movie",
+        media_id: id,
+        favourute: true
+    }
+    const res = await fetch(markAsFavouriteUrl, {
+        method: "POST",
+        headers: {
+            "content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyData)
+    })
+    const data = await res.json()
+    return data
+}
+export async function addToWatchlistRequest(id) {
+    const addtoWatchlistUrl = `https://api.themoviedb.org/3/account/{account_id}/watchlist?api_key=9b5df320c81a1edb3c2c87fa739ff2f2&session_id=76c6c3a4038803680876b2490f0b4bafd214b5f7`
+    const bodyData = {
+        media_type: "movie",
+        media_id: id,
+        favourute: true
+    }
+    const res = await fetch(addtoWatchlistUrl, {
+        method: "POST",
+        headers: {
+            "content-Type": "application/json",
+        },
+        body: JSON.stringify(bodyData)
+    })
+    const data = await res.json()
+    return data
+}
+export function markAsFavouriteHandler(e) {
+    e.target.style.color = "red"
+}
+export function addToWatchlistHandler(e) {
+    e.target.style.color = "red"
+}
 export function displayCreditsData(creditsData) {
     console.log(creditsData);
     let card = document.querySelector(".series");
@@ -64,8 +104,6 @@ export function displayData(data) {
     imgWrapper.innerHTML = imgContent;
     movieTitle.innerHTML = movieTitleContent;
     movieGenres.innerHTML = movieGenresContent;
-
-    console.log(data);
 
     data?.genres.forEach((genre) => {
         movieGenres.innerHTML += `
