@@ -51,13 +51,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         fetchKnownFor().then((artist) => {
             displayKnownFor(artist);
+            movieHandler();
         });
         fetchInforms().then((artist) => {
             displayInforms(artist);
         });
         fetchCombinedCredits().then((artist) => {
             displayCombinedCredits(artist);
-            movieHandler();
         });
     }
 });

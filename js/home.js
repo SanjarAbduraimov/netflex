@@ -23,7 +23,6 @@ export function displayData(data) {
     });
     popularMoviesDom.innerHTML = htmlContent;
 }
-console.log(popularMoviesDom);
 export function setCoverBg(img) {
     const heroDom = document.querySelector(".hero");
     heroDom.style.setProperty("--coverBg", `url(${IMG_URL}${img})`);
