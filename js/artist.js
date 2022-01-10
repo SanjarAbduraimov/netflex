@@ -1,7 +1,9 @@
 import config from "../configs.js";
+import { showLoader } from "./loader.js";
 const { API_KEY, BACKEND_API, IMG_URL } = config;
 
 export async function fetchArtist() {
+  showLoader()
     const url = `${BACKEND_API}person/${history.state.id}?api_key=${API_KEY}`;
     const res = await fetch(url);
     const artist = await res.json();

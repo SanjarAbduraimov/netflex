@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Netflex || The Movie Database</title>
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
+        integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
@@ -51,13 +54,13 @@
             <h1 class="hero__content">
                 <span>welcome.</span> <br />
                 <span>Millions of movies, TV shows and people to discover. Explore
-          now.</span><br />
+                    now.</span><br />
             </h1>
             <form id="search__form" class="search__form" method="GET" accept-charset="utf-8">
                 <label for="search__movie">
-          <input type="month" id="search__movie" name="query" class="search__input"
-            placeholder="Search for a movie, tv show, person......" value />
-        </label>
+                    <input type="month" id="search__movie" name="query" class="search__input"
+                        placeholder="Search for a movie, tv show, person......" value />
+                </label>
                 <input class="submit__btn" type="submit" value="search" />
             </form>
         </div>
@@ -89,6 +92,14 @@
             </div>
         </div>
     </section>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
+        integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        AOS.init({
+            duration: 500,
+        });
+    </script>
     <script defer type="module" src="./js/router.js"></script>
 </body>
 
