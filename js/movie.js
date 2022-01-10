@@ -54,6 +54,25 @@ export function markAsFavouriteHandler(e) {
 export function addToWatchlistHandler(e) {
   e.target.style.color = "red";
 }
+export async function markAsFavourite(id) {
+    const markAsFavouriteUrl = `https://api.themoviedb.org/3/account/{account_id}/favorite?api_key=${API_KEY}&session_id=${SESSION_ID}`;
+    const bodyData = {
+      "media_type": "movie",
+      "media_id": "id",
+      "favorite": true
+    }
+    const res = await fetch(markAsFavouriteUrl,{
+      method: "POST",
+      headers:{
+        "Content-Type" : "application/json"
+      },
+      body : JSON.stringify(bodyData)
+    });
+    const data = await res.json();
+    return data;
+}
+
+
 export function displayCreditsData(creditsData) {
   console.log(creditsData);
   let card = document.querySelector(".series");
