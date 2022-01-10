@@ -54,10 +54,35 @@ nav {
 .nav__items {
   display: flex;
   list-style: none;
+  align-items: center;
 }
+
 .nav__item {
   margin-right: 14px;
 }
+
+.nav__menu {
+  display: none;
+  position: relative;
+  /* top: 50px; */
+  background-color: #fff;
+}
+
+.nav__menu-item {
+  margin-bottom: 10px;
+}
+
+.nav__item:first-of-type:hover {
+  position: relative;
+  top: 52px;
+  margin-right: 0;
+}
+
+.nav__item:first-of-type:hover .nav__link + .nav__menu {
+  display: block;
+}
+
+
 .nav__link {
   display: inline-block;
   padding: 8px;

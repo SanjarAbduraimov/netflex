@@ -3,6 +3,10 @@ import * as movie from "./movie.js";
 import { displayArtist, fetchArtist } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
 document.addEventListener("DOMContentLoaded", () => {
+  window.addEventListener("popstate", (e) => {
+    location.reload();
+  });
+
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
       home.displayData(data);
@@ -28,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/popularMovie.html") {
     popularMovie.fetchPopularMovie(popularMovie).then((data) => {
       popularMovie.displayPopularMovie(data);
+      popularMovie.popularMovieHandler();
       popularMovie.filterName();
       popularMovie.filters();
       popularMovie.toWatch();
