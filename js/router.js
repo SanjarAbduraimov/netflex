@@ -14,9 +14,9 @@ import {
 } from "./artist.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-  // window.addEventListener("popstate", (e) => {
-  //     location.reload()
-  // })
+  window.addEventListener("popstate", (e) => {
+      location.reload()
+  })
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
       hideLoader();
