@@ -3,7 +3,6 @@ import { showLoader } from "./loader.js";
 const { API_KEY, BACKEND_API, IMG_URL, DEFAULT_IMG } = configs;
 
 export async function fetchMovie(id) {
-    showLoader();
     const urls = `${BACKEND_API}/movie/${id}?api_key=${API_KEY}&language=en-US`;
     const res = await fetch(urls);
     const data = await res.json();

@@ -1,3 +1,4 @@
+import { showLoader, hideLoader } from "./loader.js";
 import * as home from "./home.js";
 import * as movie from "./movie.js";
 import {
@@ -11,16 +12,14 @@ import {
     displayCombinedCredits,
     movieHandler,
 } from "./artist.js";
-import { showLoader, hideLoader } from "./loader.js";
+
 document.addEventListener("DOMContentLoaded", () => {
-    // window.addEventListener("popstate", (e) => {
-    //     location.reload()
-    // })
+    window.addEventListener("popstate", (e) => {
+        location.reload()
+    })
     if (location.pathname === "/" || location.pathname === "/index.html") {
-        showLoader();
         home.fetchPopularMovies().then((data) => {
             hideLoader();
-
             home.displayData(data);
             home.movieHandler();
             home.setCoverBg(data.results[0].backdrop_path);
@@ -28,7 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (location.pathname === "/movie.html") {
         movie.fetchMovie(history.state.id).then((data) => {
-            hideLoader()
+            hideLoader();
             movie.displayData(data);
             const favouriteBtn = document.querySelector(".mark__as__favourite");
             favouriteBtn.onclick = (e) => {
@@ -46,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     if (location.pathname === "/artist.html") {
         fetchArtist().then((artist) => {
-            hideLoader()
+            hideLoader();
             displayArtist(artist);
         });
         fetchKnownFor().then((artist) => {
@@ -58,6 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         fetchCombinedCredits().then((artist) => {
             displayCombinedCredits(artist);
+            movieHandler();
         });
     }
 });
