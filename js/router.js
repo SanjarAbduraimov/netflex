@@ -28,15 +28,25 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/movie.html") {
     movie.fetchMovie(history.state.id).then((data) => {
       hideLoader();
+      movie.isFavourite(data.id);
       movie.displayData(data);
       const favouriteBtn = document.querySelector(".mark__as__favourite");
-      favouriteBtn.onclick = (e) => {
-        movie.markAsFavouriteHandler(e);
-      };
+      // favouriteBtn.onclick = (e) => {
+      //   movie.markAsFavouriteHandler(e);
+      // };
+      favouriteBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        movie.markAsFavouriteHandler(e,data.id);
+      })
       const watchlistBtn = document.querySelector(".add__to__watchlist");
-      watchlistBtn.onclick = (e) => {
+      // watchlistBtn.onclick = (e) => {
+      //   movie.addToWatchlistHandler(e);
+      // };
+      watchlistBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
         movie.addToWatchlistHandler(e);
-      };
+        
+      })
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
