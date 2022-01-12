@@ -1,6 +1,6 @@
 import configs from "../configs.js";
 import { showLoader } from "./loader.js";
-const { API_KEY, BACKEND_API, IMG_URL, DEFAULT_IMG } = configs;
+const { API_KEY, BACKEND_API, IMG_URL, DEFAULT_IMG, SESSION_ID } = configs;
 
 export async function fetchMovie(id) {
   const urls = `${BACKEND_API}/movie/${id}?api_key=${API_KEY}&language=en-US`;
@@ -14,12 +14,12 @@ export async function fetchCredits(id) {
   const data = await res.json();
   return data;
 }
-export async function markAsFavouriteRequest(id) {
-  const markAsFavouriteUrl = `https://api.themoviedb.org/3/account/{account_id}/favorite?api_key=9b5df320c81a1edb3c2c87fa739ff2f2&session_id=76c6c3a4038803680876b2490f0b4bafd214b5f7`;
+export async function favouriteRequestHandler(id, favorite) {
+  const markAsFavouriteUrl = `${BACKEND_API}account/{account_id}/favorite?api_key=${API_KEY}&session_id=${SESSION_ID}`;
   const bodyData = {
     media_type: "movie",
     media_id: id,
-    favourute: true,
+    favorite,
   };
   const res = await fetch(markAsFavouriteUrl, {
     method: "POST",
@@ -31,12 +31,12 @@ export async function markAsFavouriteRequest(id) {
   const data = await res.json();
   return data;
 }
-export async function addToWatchlistRequest(id) {
-  const addtoWatchlistUrl = `https://api.themoviedb.org/3/account/{account_id}/watchlist?api_key=9b5df320c81a1edb3c2c87fa739ff2f2&session_id=76c6c3a4038803680876b2490f0b4bafd214b5f7`;
+export async function addToWatchlistRequest(id, favourite) {
+  const addtoWatchlistUrl = `${BACKEND_API}account/{account_id}/watchlist?api_key=${API_KEY}&session_id=${SESSION_ID}`;
   const bodyData = {
     media_type: "movie",
     media_id: id,
-    favourute: true,
+    favourite,
   };
   const res = await fetch(addtoWatchlistUrl, {
     method: "POST",
@@ -48,28 +48,81 @@ export async function addToWatchlistRequest(id) {
   const data = await res.json();
   return data;
 }
-export function markAsFavouriteHandler(e) {
-  e.target.style.color = "red";
+
+export async function isFavourite(id) {
+  const favouritesUrl = `${BACKEND_API}/account/{account_id}/favorite/movies?api_key=${API_KEY}&session_id=${SESSION_ID}&language=en-US&sort_by=created_at.asc&page=1`;
+
+  const res = await fetch(favouritesUrl);
+  const data = await res.json();
+  console.log(data, "wdhuwhuhsduhudh");
+  let result = data?.results.find((favourite) => {
+    return favourite.id == id;
+  })
+  console.log(data, result, "isFavourite");
+  if (!result) {
+    return false;
+  }
+  return true;
+}
+
+export async function markAsFavouriteHandler(e, movie_id) {
+  let isFavouriteMovie
+  await isFavourite(movie_id).then((data) => {
+    console.log();
+    isFavouriteMovie = data
+  })
+  console.log(isFavouriteMovie, "is favouritedan nima qaytishi");
+  if (isFavouriteMovie) {
+    favouriteRequestHandler(movie_id, false).then((param) => {
+      console.log(movie_id, param, "markAsFavouriteHandler1");
+      if (param.success) {
+        console.log(e.target);
+        e.target.style.color = "blue";
+      } else {
+        alert("Xatolik ");
+      }
+    }).catch(ex => {
+      console.log("Xatolik ...", ex);
+    })
+  } else {
+    favouriteRequestHandler(movie_id, true).then((param) => {
+      console.log(movie_id, param, "markAsFavouriteHandler2");
+      if (param.success) {
+        e.target.style.color = "red";
+      } else {
+        alert("Xatolik ");
+      }
+    }).catch(ex => {
+      console.log("Xatolik qo'shilmadi ...", ex);
+    })
+  }
 }
 export function addToWatchlistHandler(e) {
-  e.target.style.color = "red";
+
+  // if(){
+  //   addToWatchlistRequest(data.id,true);
+  //   e.target.style.color = "red";
+  // }else{
+  //   e.target.style.color = "blue";
+  //   addToWatchlistRequest(data.id,false);
+  // }
 }
 export async function markAsFavourite(id) {
-    const markAsFavouriteUrl = `https://api.themoviedb.org/3/account/{account_id}/favorite?api_key=${API_KEY}&session_id=${SESSION_ID}`;
-    const bodyData = {
-      "media_type": "movie",
-      "media_id": "id",
-      "favorite": true
-    }
-    const res = await fetch(markAsFavouriteUrl,{
-      method: "POST",
-      headers:{
-        "Content-Type" : "application/json"
-      },
-      body : JSON.stringify(bodyData)
-    });
-    const data = await res.json();
-    return data;
+  const markAsFavouriteUrl = `https://api.themoviedb.org/3/account/{account_id}/favorite?api_key=${API_KEY}&session_id=${SESSION_ID}`;
+  const bodyData = {
+    "media_type": "movie",
+    "media_id": "id",
+    "favorite": true
+  }
+  const res = await fetch(markAsFavouriteUrl, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(bodyData)
+  });
+  const data = await res.json();
+  return data;
 }
 
 
@@ -138,9 +191,9 @@ export function displayData(data) {
   movieGenres += `
     <li class="ms-4 text-light">
       ${String(data.runtime / 60).slice(
-        0,
-        String(data.runtime / 60).indexOf(".")
-      )}
+    0,
+    String(data.runtime / 60).indexOf(".")
+  )}
       h ${data.runtime % 60}m
     </li>
   `;
