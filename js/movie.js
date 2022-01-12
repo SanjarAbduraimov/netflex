@@ -1,7 +1,16 @@
 import configs from "../configs.js";
 import { showLoader } from "./loader.js";
-const { API_KEY, BACKEND_API, IMG_URL, DEFAULT_IMG } = configs;
+const { API_KEY, BACKEND_API, IMG_URL, DEFAULT_IMG,SESSION_ID } = configs;
 
+export async function isFavourite(id) {
+  const favouriteUrl = `${BACKEND_API}/account/{account_id}/favorite/movies?api_key=${API_KEY}&session_id=${SESSION_ID}&language=en-US&sort_by=created_at.asc&page=1`;
+  const res = await fetch(favouriteUrl);
+  const data = await res.json();
+  console.log(data);
+  // data.results.find((favourite)=> {
+  
+  // })
+}
 export async function fetchMovie(id) {
     const urls = `${BACKEND_API}/movie/${id}?api_key=${API_KEY}&language=en-US`;
     const res = await fetch(urls);
