@@ -1,5 +1,6 @@
 import configs from "../configs.js";
-const { API_KEY, BACKEND_API, SESSION_ID, IMG_URL, DEFAULT_IMG } = configs;
+import { showLoader } from "./loader.js";
+const { API_KEY, BACKEND_API, IMG_URL, SESSION_ID, DEFAULT_IMG } = configs;
 
 export async function fetchMovie(id) {
   const urls = `${BACKEND_API}/movie/${id}?api_key=${API_KEY}&language=en-US`;
@@ -7,6 +8,7 @@ export async function fetchMovie(id) {
   const data = await res.json();
   return data;
 }
+
 export async function fetchCredits(id) {
   const creditsUrl = `${BACKEND_API}movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
   const res = await fetch(creditsUrl);
@@ -14,25 +16,100 @@ export async function fetchCredits(id) {
   return data;
 }
 
-export async function markAsFvourite(id) {
+export async function favouriteRequestHandler(id) {
   // const creditsUrl = `${BACKEND_API}movie/${id}/credits?api_key=${API_KEY}&language=en-US`;
   const markAsFavouriteUrl = `https://api.themoviedb.org/3/{account_id}/favourite?api_key=${API_KEY}&session_id=${SESSION_ID}&language=en-US`;
   const bodyData = {
     media_type: "movie",
-    media_id: "id",
-    favourite: true,
-  }
+    media_id: id,
+    favorite: true,
+  };
   const res = await fetch(markAsFavouriteUrl, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(bodyData)
+    body: JSON.stringify(bodyData),
   });
+  const data = await res.json();
+  console.log(data);
+  return data;
+}
+
+export async function isFvourite(id) {
+  const favouritesUrl = `${BACKEND_API}account/{account_id}/favorite/movies?api_key=${API_KEY}&session_id=${SESSION_ID}&language=en-US&sort_by=created_at.asc&page=1`;
+  let finalResult;
+  const res = await fetch(favouritesUrl)
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data, "dataaaaaaaa0");
+      let result = data?.results.find((favourite) => {
+        return favourite.id === id;
+      });
+      if (!result) {
+        return finalResult = false;
+      }
+      return finalResult = true;
+    });
+  // });
+  const data = await res.json();
+  console.log(data);
+  console.log(result);
+  if (!result) {
+    return false;
+  }
+  return true;
+  // console.log(data);
+  // return data;
+}
+
+export async function addToWatchlistRequest(id) {
+  const addtoWatchlistUrl = `https://api.themoviedb.org/3/account/{account_id}/watchlist?api_key=${API_KEY}&session_id=${SESSION_ID}`;
+  const bodyData = {
+    media_type: "movie",
+    media_id: id,
+    favourute: true,
+  };
+  const res = await fetch(addtoWatchlistUrl, {
+    method: "POST",
+    headers: {
+      "content-Type": "application/json",
+    },
+    body: JSON.stringify(bodyData),
+  });
+  // console.log(data);
   const data = await res.json();
   return data;
 }
 
+export function markAsFavouriteHandler(e, movie_id) {
+  console.log();
+  if (isFvourite(movie_id)) {
+    favouriteRequestHandler(data.id, false);
+    e.target.style.color = "blue";
+  } else {
+    e.target.style.color = "red";
+    favouriteRequestHandler(id);
+    favouriteRequestHandler(data.id, true)
+      .then((param) => {
+        if (param.success) {
+          e.target.style.color = "red";
+        } else {
+          alert("Error: 404");
+        }
+      })
+      .catch((err) => {
+        console.log("Xatolik ...", err);
+      });
+  }
+}
+
+export function addToWatchlistHandler(e) {
+  e.target.style.color = "red";
+  movie.addToWatchlistRequest(id);
+}
 
 export function displayCreditsData(creditsData) {
   console.log(creditsData);
@@ -85,8 +162,6 @@ export function displayData(data) {
   imgWrapper.innerHTML = imgContent;
   movieTitle.innerHTML = movieTitleContent;
   movieGenres.innerHTML = movieGenresContent;
-
-  console.log(data);
 
   data?.genres.forEach((genre) => {
     movieGenres.innerHTML += `

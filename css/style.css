@@ -8,6 +8,7 @@
   height: 7px;
   scrollbar-width: thin;
 }
+
 ::-webkit-scrollbar-thumb {
   border-radius: 15px;
   background: #dbdbdb;
@@ -27,6 +28,7 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
 }
+
 body {
   font-family: "Consensus", Helvetica, sans-serif;
 }
@@ -37,6 +39,20 @@ body {
   right: 0;
   background: red;
 }
+
+.loader {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #ffffff;
+  z-index: 100;
+}
+
 nav {
   display: flex;
   align-items: center;
@@ -46,6 +62,7 @@ nav {
   background: #032541;
   font-size: 14px;
 }
+
 .logo {
   display: inline-block;
   margin-right: 16px;
@@ -90,11 +107,13 @@ nav {
   font-weight: 600;
   text-transform: capitalize;
 }
+
 .nav__options {
   display: inline-flex;
   align-items: center;
   margin-left: auto;
 }
+
 .nav__options a {
   display: inline-flex;
   margin: 0 15px;
@@ -118,6 +137,7 @@ nav {
   background: #fff;
   color: #032541;
 }
+
 .icon {
   display: inline-flex;
   min-width: 1.6rem;
@@ -127,6 +147,7 @@ nav {
   background-position: center;
   background-repeat: no-repeat;
 }
+
 .plus.white {
   background-image: url(../assets/img/icons/plus.svg);
 }
@@ -135,9 +156,11 @@ nav {
   background-image: url(../assets/img/icons/bell.svg);
   color: #fff;
 }
+
 .search {
   background-image: url(../assets/img/icons/search.svg);
 }
+
 .avatar {
   display: flex;
   align-items: center;
@@ -175,10 +198,12 @@ nav {
   font-weight: 600;
   text-transform: capitalize;
 }
+
 .search__form {
   margin-top: 50px;
   position: relative;
 }
+
 .search__input {
   width: 100%;
   height: 46px;
@@ -190,6 +215,7 @@ nav {
   border: none;
   outline: none;
 }
+
 .submit__btn {
   position: absolute;
   top: 50%;
@@ -233,9 +259,11 @@ nav {
   border-radius: 10px;
   cursor: pointer;
 }
+
 .card h2 {
   font-size: 16px;
 }
+
 .card a {
   font-weight: 700;
   color: #000;
@@ -244,6 +272,7 @@ nav {
 .card a:hover {
   color: #01b4e4;
 }
+
 .card span {
   font-size: 14px;
   color: #00000099;

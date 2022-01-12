@@ -1,4 +1,5 @@
 import configs from "../configs.js";
+import { showLoader } from "./loader.js";
 const { BACKEND_API, API_KEY, IMG_URL } = configs;
 export async function fetchPopularMovies() {
   const url = `${BACKEND_API}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`;
@@ -11,7 +12,8 @@ export function displayData(data) {
   const popularMoviesDom = document.querySelector(".popular__movies");
   let htmlContent = "";
   data.results.forEach((movie) => {
-    htmlContent += `<div class="card" data-id = "${movie.id} ">
+    htmlContent += `<div data-aos="fade-up"
+        data-aos-anchor-placement="top-bottom" class="card" data-id = "${movie.id} ">
       <img
         height="250"
         src="${IMG_URL}${movie.poster_path}"

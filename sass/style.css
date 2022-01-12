@@ -1,0 +1,255 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  size: 62.4%;
+  font-family: sans-serif;
+}
+
+.container {
+  padding: 0 10rem;
+}
+
+.containerplus {
+  padding: 0 8rem;
+}
+
+.upheader {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: #032541;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100px;
+  line-height: 100px;
+}
+
+.upheader .logo {
+  width: 20%;
+  margin-right: 5rem;
+  margin-top: .5rem;
+}
+
+.upheader .logo img {
+  width: 100%;
+}
+
+.upheader ._navlist {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 30%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-right: 20rem;
+  list-style: none;
+}
+
+.upheader ._navlist ._navitem {
+  position: relative;
+}
+
+.upheader ._navlist ._navitem a {
+  text-decoration: none;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.upheader ._navlist ._navitem ._submenu {
+  display: none;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+.upheader ._navlist ._navitem ._submenu ul {
+  list-style: none;
+}
+
+.upheader ._navlist ._navitem ._submenu ul li {
+  padding: .5rem 0;
+}
+
+.upheader ._navlist ._navitem ._submenu a {
+  color: black;
+  font-weight: normal;
+}
+
+.upheader ._navlist ._navitem:hover ._submenu {
+  display: inline-block;
+  position: absolute;
+  line-height: normal;
+  left: -5px;
+  top: 5rem;
+}
+
+.upheader .logs {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  list-style: none;
+  width: 30%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.upheader .logs ._logs {
+  position: relative;
+}
+
+.upheader .logs ._logs .plus {
+  position: absolute;
+  right: -10rem;
+  display: none;
+  top: 5rem;
+  background-color: #fff;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  width: 20rem;
+  line-height: normal;
+}
+
+.upheader .logs ._logs:active .plus {
+  display: inline-block;
+}
+
+.upheader .logs a {
+  text-decoration: none;
+  color: #FFF;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.bottomheader {
+  height: 25rem;
+  border: 1px  solid black;
+  background: linear-gradient(45deg, rgba(0, 0, 248, 0.459), rgba(0, 0, 248, 0.459)), url("https://www.themoviedb.org/t/p/original/ekZobS8isE6mA53RAiGDG93hBxL.jpg");
+  background-size: cover;
+  background-position: center;
+  padding-top: 5rem;
+  margin-top: 5rem;
+}
+
+.bottomheader h1 {
+  font-size: 3rem;
+  color: #fff;
+}
+
+.bottomheader h3 {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.bottomheader .search_input {
+  margin-top: 5rem;
+  padding: 1rem 2rem;
+  width: 90%;
+  border-radius: 5rem;
+  border: none;
+  font-size: 1.2rem;
+}
+
+.bottomheader .search_input::-webkit-input-placeholder {
+  font-size: 1.2rem;
+}
+
+.bottomheader .search_input:-ms-input-placeholder {
+  font-size: 1.2rem;
+}
+
+.bottomheader .search_input::-ms-input-placeholder {
+  font-size: 1.2rem;
+}
+
+.bottomheader .search_input::placeholder {
+  font-size: 1.2rem;
+}
+
+.bottomheader .search_input:focus {
+  outline: none;
+}
+
+.bottomheader .search_btn {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  border: none;
+  font-size: 1.2rem;
+  border-radius: 5rem;
+  margin-left: -5rem;
+  background: -webkit-gradient(linear, left top, right top, from(#1ed5a9), to(#01b4e4));
+  background: linear-gradient(to right, #1ed5a9 0%, #01b4e4 100%);
+}
+
+footer {
+  background-color: #032541;
+  height: 25rem;
+}
+
+footer .left {
+  float: left;
+  position: relative;
+  padding-top: 4rem;
+  max-width: 30%;
+  text-align: right;
+  height: 20rem;
+  margin-left: 3rem;
+}
+
+footer .left img {
+  width: 50%;
+}
+
+footer .left a {
+  display: block;
+  margin-top: 3rem;
+  padding: 1rem 2.5rem;
+  background-color: #fff;
+  position: absolute;
+  right: 0;
+  border-radius: .5rem;
+  text-decoration: none;
+  font-weight: bold;
+  color: #01b4e4;
+  text-align: center;
+}
+
+footer ul {
+  float: left;
+  margin-top: 5rem;
+  margin-left: .8rem;
+  list-style: none;
+}
+
+footer ul .th a {
+  font-size: 1.2rem;
+  font-weight: bolder;
+}
+
+footer ul li {
+  padding: .1rem;
+}
+
+footer ul li a {
+  font-size: 1rem;
+  text-decoration: none;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */

@@ -1,3 +1,4 @@
+import { showLoader, hideLoader } from "./loader.js";
 import * as home from "./home.js";
 import * as movie from "./movie.js";
 import { displayArtist, fetchArtist } from "./artist.js";
@@ -9,15 +10,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
+      hideLoader();
       home.displayData(data);
       home.movieHandler();
       home.setCoverBg(data.results[0].backdrop_path);
     });
   }
   if (location.pathname === "/movie.html") {
-    console.log(history.state);
     movie.fetchMovie(history.state.id).then((data) => {
+      hideLoader();
+      movie.isFvourite(data.id);
       movie.displayData(data);
+      const favouriteBtn = document.querySelector(".mark__as-favourite");
+      favouriteBtn.onclick = (e) => {
+        movie.markAsFavouriteHandler(e, data.id);
+      };
+      const watchlistBtn = document.querySelector(".add__to-watchlist");
+      watchlistBtn.onclick = (e) => {
+        movie.addToWatchlistHandler(e);
+      };
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
@@ -26,6 +37,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (location.pathname === "/artist.html") {
     fetchArtist().then((artist) => {
+      hideLoader();
       displayArtist(artist);
     });
   }
