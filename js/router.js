@@ -70,8 +70,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   if (location.pathname === "/profile.html"){
-    profile.profileEvent()
-    profile.getWatchList()
+    profile.profileEvent();
   }
 });
 
