@@ -63,4 +63,10 @@ document.addEventListener("DOMContentLoaded", () => {
       popularMovie.toWatch();
     });
   }
+  if (location.pathname === "/profile.html") {
+    fetchArtist().then((artist) => {
+      hideLoader();
+      displayArtist(artist);
+    });
+  }
 });

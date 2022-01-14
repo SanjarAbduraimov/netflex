@@ -266,9 +266,9 @@ export function displayData(data) {
   movieGenres += `
     <li class="ms-4 text-light">
       ${String(data.runtime / 60).slice(
-        0,
-        String(data.runtime / 60).indexOf(".")
-      )}
+    0,
+    String(data.runtime / 60).indexOf(".")
+  )}
       h ${data.runtime % 60}m
     </li>
   `;

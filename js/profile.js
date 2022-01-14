@@ -9,6 +9,13 @@ async function fetchDetailsData() {
   return data;
 }
 
+export async function getWatchList() {
+  const watchlistUrl = ``;
+  const res = await fetch(watchlistUrl);
+  const watchlistData = await res.json();
+  return watchlistData;
+}
+
 async function DisplayDetails(data) {
   const imgPath = document.querySelector(".img_wrapper");
   const profileName = document.querySelector(".profile_name");
@@ -18,8 +25,6 @@ async function DisplayDetails(data) {
     imgPath.innerHTML = imgContent;
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  fetchDetailsData().then((data)=>{
-      DisplayDetails(data)
-  });
-});
+export async function profileEvent() {
+  const 
+}
