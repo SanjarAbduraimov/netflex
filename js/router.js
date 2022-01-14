@@ -25,24 +25,27 @@ document.addEventListener('DOMContentLoaded', () => {
       home.setCoverBg(data.results[0].backdrop_path)
     })
   }
-  if (location.pathname === '/movie.html') {
-    movie.fetchMovie(history.state.id).then(data => {
-      hideLoader()
-      movie.isFavourite(data.id)
-      movie.displayData(data)
-      const favouriteBtn = document.querySelector('.mark__as__favourite')
-      favouriteBtn.onclick = e => {
-        movie.markAsFavouriteHandler(e)
-      }
-      const watchlistBtn = document.querySelector('.add__to__watchlist')
-      watchlistBtn.onclick = e => {
-        movie.addToWatchlistHandler(e)
-      }
-    })
-    movie.fetchCredits(history.state.id).then(data => {
-      movie.displayCreditsData(data)
-      movie.artistHandler()
-    })
+  if (location.pathname === "/movie.html") {
+    movie.fetchMovie(history.state.id).then((data) => {
+      hideLoader();
+      movie.isFavourite(data.id);
+      movie.isWatchlist(data.id);
+      movie.displayData(data);
+      const favouriteBtn = document.querySelector(".mark__as__favourite");
+      favouriteBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        movie.markAsFavouriteHandler(e,data.id);
+      })
+      const watchlistBtn = document.querySelector(".add__to__watchlist");
+      watchlistBtn.addEventListener("click",(e)=>{
+        e.preventDefault();
+        movie.addToWatchlistHandler(e,data.id);
+      })
+    });
+    movie.fetchCredits(history.state.id).then((data) => {
+      movie.displayCreditsData(data);
+      movie.artistHandler();
+    });
   }
   if (location.pathname === '/artist.html') {
     fetchArtist().then(artist => {
