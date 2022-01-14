@@ -42,6 +42,22 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault();
         movie.addToWatchlistHandler(e, data.id);
       });
+      const favouriteBtn = document.querySelector(".mark__as__favourite");
+      // favouriteBtn.onclick = (e) => {
+      //   movie.markAsFavouriteHandler(e);
+      // };
+      favouriteBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        movie.markAsFavouriteHandler(e, data.id);
+      });
+      const watchlistBtn = document.querySelector(".add__to__watchlist");
+      // watchlistBtn.onclick = (e) => {
+      //   movie.addToWatchlistHandler(e);
+      // };
+      watchlistBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        movie.addToWatchlistHandler(e);
+      });
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
