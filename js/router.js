@@ -1,6 +1,7 @@
 import { showLoader, hideLoader } from "./loader.js";
 import * as home from "./home.js";
 import * as movie from "./movie.js";
+import * as profile from "./profile.js";
 import {
   displayArtist,
   fetchArtist,
@@ -15,8 +16,8 @@ import {
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", (e) => {
-      location.reload()
-  })
+    location.reload();
+  });
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
       hideLoader();
@@ -34,19 +35,18 @@ document.addEventListener("DOMContentLoaded", () => {
       // favouriteBtn.onclick = (e) => {
       //   movie.markAsFavouriteHandler(e);
       // };
-      favouriteBtn.addEventListener("click",(e)=>{
+      favouriteBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        movie.markAsFavouriteHandler(e,data.id);
-      })
+        movie.markAsFavouriteHandler(e, data.id);
+      });
       const watchlistBtn = document.querySelector(".add__to__watchlist");
       // watchlistBtn.onclick = (e) => {
       //   movie.addToWatchlistHandler(e);
       // };
-      watchlistBtn.addEventListener("click",(e)=>{
+      watchlistBtn.addEventListener("click", (e) => {
         e.preventDefault();
         movie.addToWatchlistHandler(e);
-        
-      })
+      });
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
@@ -69,4 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
       movieHandler();
     });
   }
+  if (location.pathname === "/profile.html"){
+    profile.profileEvent()
+    profile.getWatchList()
+  }
 });
+
