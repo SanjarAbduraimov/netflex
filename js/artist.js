@@ -1,4 +1,5 @@
 import config from "../configs.js";
+import { showLoader } from "./loader.js";
 const { API_KEY, BACKEND_API, IMG_URL } = config;
 
 export async function fetchArtist() {
