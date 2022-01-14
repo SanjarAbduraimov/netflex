@@ -24,6 +24,24 @@
   padding-top: 50px;
 }
 
+.hero__item .tooltip {
+  display: none;
+  width: 300px;
+  height: 100px;
+  background-color: #fff;
+}
+
+.tooltip__content {
+  width: 250px;
+  border-radius: 5px;
+  margin: auto;
+}
+
+.tooltip__content h2 {
+  font-size: 18px;
+  padding: 10px;
+}
+
 .hero__img {
   border-radius: 6px;
 }
@@ -42,6 +60,10 @@
   border-radius: 50%;
   border: 4px solid #199119;
   border-left: transparent;
+}
+
+.hero__actions a {
+  color: #fff;
 }
 
 /* .hero__actions .percent div::before {

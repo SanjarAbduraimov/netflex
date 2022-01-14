@@ -19,16 +19,29 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/movie.html") {
     movie.fetchMovie(history.state.id).then((data) => {
       hideLoader();
-      movie.isFvourite(data.id);
+      movie.isFavourite(data.id);
       movie.displayData(data);
+      // movie.addTolist()
+      const addTolist = document.querySelector(".add__to-list");
+      addTolist.addEventListener("click", (e) => {
+        e.preventDefault();
+        movie.addTolist(e);
+        if ((tooltip.style.display = "contents")) {
+          tooltip.style.display = "none";
+        } else {
+          tooltip.style.display = "contents";
+        }
+      });
       const favouriteBtn = document.querySelector(".mark__as-favourite");
-      favouriteBtn.onclick = (e) => {
+      favouriteBtn.addEventListener("click", (e) => {
+        e.preventDefault();
         movie.markAsFavouriteHandler(e, data.id);
-      };
+      });
       const watchlistBtn = document.querySelector(".add__to-watchlist");
-      watchlistBtn.onclick = (e) => {
-        movie.addToWatchlistHandler(e);
-      };
+      watchlistBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        movie.addToWatchlistHandler(e, data.id);
+      });
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
