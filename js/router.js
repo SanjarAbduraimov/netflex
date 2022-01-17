@@ -5,9 +5,8 @@ import { displayArtist, fetchArtist } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", (e) => {
-    location.reload();
-  });
-
+      location.reload()
+  })
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
       hideLoader();
@@ -21,27 +20,23 @@ document.addEventListener("DOMContentLoaded", () => {
       hideLoader();
       movie.isFavourite(data.id);
       movie.displayData(data);
-      // movie.addTolist()
-      const addTolist = document.querySelector(".add__to-list");
-      addTolist.addEventListener("click", (e) => {
+      const favouriteBtn = document.querySelector(".mark__as__favourite");
+      // favouriteBtn.onclick = (e) => {
+      //   movie.markAsFavouriteHandler(e);
+      // };
+      favouriteBtn.addEventListener("click",(e)=>{
         e.preventDefault();
-        movie.addTolist(e);
-        if ((tooltip.style.display = "contents")) {
-          tooltip.style.display = "none";
-        } else {
-          tooltip.style.display = "contents";
-        }
-      });
-      const favouriteBtn = document.querySelector(".mark__as-favourite");
-      favouriteBtn.addEventListener("click", (e) => {
+        movie.markAsFavouriteHandler(e,data.id);
+      })
+      const watchlistBtn = document.querySelector(".add__to__watchlist");
+      // watchlistBtn.onclick = (e) => {
+      //   movie.addToWatchlistHandler(e);
+      // };
+      watchlistBtn.addEventListener("click",(e)=>{
         e.preventDefault();
-        movie.markAsFavouriteHandler(e, data.id);
-      });
-      const watchlistBtn = document.querySelector(".add__to-watchlist");
-      watchlistBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        movie.addToWatchlistHandler(e, data.id);
-      });
+        movie.addToWatchlistHandler(e);
+        
+      })
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
