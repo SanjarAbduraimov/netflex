@@ -4,11 +4,11 @@ import * as movie from "./movie.js";
 import { displayArtist, fetchArtist } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
 import { displaySearchResults, fetchSearchMovie } from "./search.js";
+
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", (e) => {
     location.reload();
   });
-  console.log("salomjbhsjdhjshd");
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
       hideLoader();
@@ -29,10 +29,18 @@ document.addEventListener("DOMContentLoaded", () => {
       });
       movie.displayData(data);
       const favouriteBtn = document.querySelector(".mark__as-favourite");
+
       favouriteBtn.addEventListener("click", (e) => {
         e.preventDefault();
         movie.markAsFavouriteHandler(e, data.id);
       });
+
+      const watchlistBtn = document.querySelector(".add__to__watchlist");
+      watchlistBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        movie.addToWatchlistHandler(e);
+      });
+
       // const watchlistBtn = document.querySelector(".add__to__watchlist");
       // watchlistBtn.onclick = (e) => {
       //   movie.addToWatchlistHandler(e);
@@ -69,4 +77,8 @@ document.addEventListener("DOMContentLoaded", () => {
       displaySearchResults(data);
     });
   }
+  if (location.pathname === "/profile.html"){
+    profile.profileEvent();
+  }
 });
+
