@@ -51,10 +51,6 @@
   cursor: pointer;
 }
 
-.filter {
-  display: none;
-}
-
 .filter::before {
   content: "";
   position: relative;
@@ -87,4 +83,15 @@
 
 .hero__content-link {
   border-radius: 6px;
+}
+
+.hero__actions {
+  display: none!important;
+  width: 150px;
+  border: 0.1px solid;
+  border-radius: 6px;
+}
+
+.hero__actions-links {
+  text-decoration: none;
 }

@@ -57,10 +57,20 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/popularMovie.html") {
     popularMovie.fetchPopularMovie(popularMovie).then((data) => {
       popularMovie.displayPopularMovie(data);
+      const cardOption = document.querySelector(".card__options");
+      console.log(cardOption);
+      const actions = document.querySelector(".hero__actions");
+      // popularMovie.popularMovieHandler();
+      console.log(actions);
+      cardOption.addEventListener("click", (e) => {
+        if ((actions.style.display == "none!important")) {
+          actions.style.display = "flex!important";
+        } else {
+          actions.style.display = "none!important";
+        }
+      });
       popularMovie.popularMovieHandler();
-      popularMovie.filterName();
-      popularMovie.filters();
-      popularMovie.toWatch();
+
     });
   }
   if (location.pathname === "/profile.html") {
