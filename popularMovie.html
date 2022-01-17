@@ -24,14 +24,17 @@
             <div class="filter__panel p-3 mb-3">
               <div
                 class="filter__name text-capitalize fw-bold fs-5"
-                onclick="filterName()"
+                data-bs-toggle="collapse"
+                data-bs-target="#filter1"
+                aria-expanded="false"
+                role="button"
               >
                 <span> sort </span>
                 <span>
                   <i class="fas fa-chevron-right fs-6 fw-bold"></i>
                 </span>
               </div>
-              <div class="filter">
+              <div class="filter" id="filter1">
                 <div class="filter__item lead fs-6 mb-2">Sort Results By</div>
                 <select class="p-2 fs-6 w-100">
                   <option value="popularityDescending">
@@ -55,52 +58,185 @@
             <div class="filter__panel p-3 mb-3">
               <div
                 class="filter__name filter__name-2 text-capitalize fw-bold fs-5"
-                onclick="filters()"
+                data-bs-toggle="collapse"
+                data-bs-target="#filter2"
+                aria-expanded="false"
+                role="button"
               >
                 <span> filters </span>
                 <span>
                   <i class="fas fa-chevron-right fs-6 fw-bold"></i>
                 </span>
               </div>
-              <div class="filter filter2">
-                <div class="filter__item lead fs-6 mb-2">Show Me</div>
-                <select class="p-2 fs-6 w-100">
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                </select>
+              <div class="filter collapse" id="filter2">
+                <div class="filter__item lead fs-6 mb-2">Availabilities</div>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox1"
+                  />
+                  <label for="searchCheckbox1"
+                    >Search all availabilities?</label
+                  >
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox2"
+                    checked
+                  />
+                  <label for="searchCheckbox2">Stream</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox3"
+                    checked
+                  />
+                  <label for="searchCheckbox3">Free</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox4"
+                    checked
+                  />
+                  <label for="searchCheckbox4">Ads</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox5"
+                    checked
+                  />
+                  <label for="searchCheckbox5">Rent</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox6"
+                    checked
+                  />
+                  <label for="searchCheckbox6">Buy</label>
+                </label>
+                <hr />
+                <div class="filter__item lead fs-6 mb-2">Release Dates</div>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox6"
+                  />
+                  <label for="searchCheckbox6">Search all releases? </label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox7"
+                    checked
+                  />
+                  <label for="searchCheckbox7">Search all countries?</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox7"
+                    checked
+                  />
+                  <label for="searchCheckbox7">Premiere</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox8"
+                    checked
+                  />
+                  <label for="searchCheckbox8">Theatrical (limited)</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox9"
+                    checked
+                  />
+                  <label for="searchCheckbox9"> Theatrical</label>
+                </label>
+                <label class="d-flex">
+                  <input
+                    type="checkbox"
+                    class="m-1"
+                    name="checkbox"
+                    id="searchCheckbox10"
+                    checked
+                  />
+                  <label for="searchCheckbox10">Digital</label>
+                </label>
+                <label class="d-flex">
+                  <span>form</span>
+                  <input
+                    type="date"
+                    class="m-1 d-inline-block"
+                    name="checkbox"
+                    width="100px"
+                    height="20px"
+                  />
+                </label>
+                <label class="d-flex">
+                  <span>to</span>
+                  <input
+                    type="date"
+                    class="m-1 d-inline-block"
+                    name="checkbox"
+                    width="100px"
+                    height="20px"
+                    value="2022-07-17"
+                  />
+                </label>
+                <hr />
               </div>
             </div>
             <div class="filter__panel p-3 mb-3">
               <div
                 class="filter__name filter__name-3 text-capitalize fw-bold fs-5"
-                onclick="toWatch()"
+                data-bs-toggle="collapse"
+                data-bs-target="#filter3"
+                aria-expanded="true"
+                role="button"
               >
                 <span> where to watch </span>
                 <span>
                   <i class="fas fa-chevron-right fs-6 fw-bold"></i>
                 </span>
               </div>
-              <div class="filter filter3">
+              <div class="filter collapse" id="filter3">
                 <div class="filter__item lead fs-6 mb-2 text-capitalize">
                   <span> my services </span>
                   <a class="text-dark ms-1" href="#">
                     <i class="fas fa-pen-square"></i>
                   </a>
                 </div>
-                <label class="d-flex" for="">
+                <label class="d-flex">
                   <input
                     type="checkbox"
                     class="m-1"
@@ -111,7 +247,7 @@
                     >Restrict searches to my subscribed services?</label
                   >
                 </label>
-                <hr>
+                <hr />
                 <p class="text-capitalize">country</p>
               </div>
             </div>
@@ -138,6 +274,28 @@
                   <i class="fas fa-ellipsis-h"></i>
                 </div>
               </div>
+              <ul class="hero__actions d-flex flex-column align-items-center list-unstyled bg-white">
+                <li class="me-4">
+                  <a class="hero__actions-links add__to-list" href="#">
+                    <i class="fas fa-list text-dark"></i>
+                  </a>
+                </li>
+                <li class="me-4 mark__as-favourite">
+                  <a class="hero__actions-links" href="#">
+                    <i class="fas fa-heart text-dark"></i>
+                  </a>
+                </li>
+                <li class="me-4 add__to-watchlist">
+                  <span class="hero__actions-links">
+                    <i class="fas fa-bookmark text-dark"></i>
+                  </span>
+                </li>
+                <li class="me-4">
+                  <a class="hero__actions-links">
+                    <i class="fas fa-star text-dark"></i>
+                  </a>
+                </li>
+              </ul>
               <div class="card__link ms-3 mt-3">
                 <a
                   class="card__link-item text-decoration-none fw-bold text-dark"
@@ -319,6 +477,7 @@
         </div>
       </div>
     </section>
+    <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script defer type="module" src="./js/router.js"></script>
   </body>
 </html>
