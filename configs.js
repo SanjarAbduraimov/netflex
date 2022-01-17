@@ -1,7 +1,7 @@
 export default {
   BACKEND_API: `https://api.themoviedb.org/3/`,
   IMG_URL: `https://image.tmdb.org/t/p/w500/`,
-  API_KEY: "08469cc05756c025bdd37cef5cd82c74",
+  API_KEY: "7014e2cdb739f65a296e51932f359f53",
   DEFAULT_IMG: `${window.origin}/assets/img/icons/img-thumbnail.svg`,
-  SESSION_ID: "ee72b75ed1884b9dd9648266a54882d0074db137"
+  SESSION_ID: "6bd6bfc00b2ea6cd0d24b457d57e60eec394652a"
 };
