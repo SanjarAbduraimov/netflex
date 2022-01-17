@@ -35,11 +35,11 @@ document.addEventListener("DOMContentLoaded", () => {
         movie.markAsFavouriteHandler(e, data.id);
       });
 
-      const watchlistBtn = document.querySelector(".add__to__watchlist");
-      watchlistBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        movie.addToWatchlistHandler(e);
-      });
+      // const watchlistBtn = document.querySelector(".add__to__watchlist");
+      // watchlistBtn.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   movie.addToWatchlistHandler(e);
+      // });
 
       // const watchlistBtn = document.querySelector(".add__to__watchlist");
       // watchlistBtn.onclick = (e) => {
@@ -77,8 +77,7 @@ document.addEventListener("DOMContentLoaded", () => {
       displaySearchResults(data);
     });
   }
-  if (location.pathname === "/profile.html"){
+  if (location.pathname === "/profile.html") {
     profile.profileEvent();
   }
 });
-
