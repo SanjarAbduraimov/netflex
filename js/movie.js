@@ -1,5 +1,4 @@
 import configs from "../configs.js";
-import { showLoader } from "./loader.js";
 const { API_KEY, BACKEND_API, IMG_URL, DEFAULT_IMG, SESSION_ID } = configs;
 
 export async function fetchMovie(id) {

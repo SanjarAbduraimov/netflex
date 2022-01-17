@@ -1,11 +1,21 @@
 import configs from "../configs.js";
-import { showLoader } from "./loader.js";
-const { BACKEND_API, API_KEY, IMG_URL } = configs;
+import { fetchSearchMovie } from "./search.js";
+const { BACKEND_API, API_KEY, IMG_URL, DEFAULT_IMG } = configs;
 export async function fetchPopularMovies() {
   const url = `${BACKEND_API}movie/popular/?api_key=${API_KEY}&language=en-US&page=1`;
   const res = await fetch(url);
   const data = await res.json();
   return data;
+}
+
+export function searchMovieHandler(location, history) {
+  const input = document.querySelector(".search__form");
+  input.addEventListener("submit", (e) => {
+    e.preventDefault();
+    console.log(input.query.value, "chiqar");
+    history.pushState({ query: input.query.value }, "search", "/search.html");
+    location.assign("/search.html");
+  });
 }
 
 export function displayData(data) {

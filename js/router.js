@@ -3,15 +3,18 @@ import * as home from "./home.js";
 import * as movie from "./movie.js";
 import { displayArtist, fetchArtist } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
+import { displaySearchResults, fetchSearchMovie } from "./search.js";
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", (e) => {
     location.reload();
   });
+  console.log("salomjbhsjdhjshd");
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
       hideLoader();
       home.displayData(data);
       home.movieHandler();
+      home.searchMovieHandler(location, history);
       home.setCoverBg(data.results[0].backdrop_path);
     });
   }
@@ -57,6 +60,13 @@ document.addEventListener("DOMContentLoaded", () => {
       popularMovie.filterName();
       popularMovie.filters();
       popularMovie.toWatch();
+    });
+  }
+  if (location.pathname === "/search.html") {
+    console.log(history.state, "salom");
+    fetchSearchMovie(history.state.query).then((data) => {
+      console.log(data, "Search");
+      displaySearchResults(data);
     });
   }
 });
