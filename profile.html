@@ -62,29 +62,9 @@
         <ul class="main_menu">
           <div class="center">
             <li class="_navitem">
-              <a href="#" class="_navlink"
-                >Overview <i class="fa fa-caret-down"></i
+              <a href="#" class="_navlink favourite"
+                >Favourites</i
               ></a>
-              <div class="_submenu">
-                <ul>
-                  <li><a href="">Main</a></li>
-                  <li><a href="">Favourites</a></li>
-                  <div class="fav_menu">
-                    <ul>
-                      <li><a href="">Movies</a></li>
-                      <li><a href="">TV Shows</a></li>
-                    </ul>
-                  </div>
-                  <li><a href="">Recommendations</a></li>
-                  <div class="rec_menu">
-                    <ul>
-                      <li><a href="">Movies</a></li>
-                      <li><a href="">TV Shows</a></li>
-                    </ul>
-                  </div>
-                  <li><a href="">Edit profile</a></li>
-                </ul>
-              </div>
             </li>
             <li class="_navitem">
               <a href="#" class="_navlink">Discussions</a>
@@ -94,27 +74,34 @@
             </li>
             <li class="_navitem">
               <a href="#" class="_navlink"
-                >Ratings <i class="fa fa-caret-down"></i
-              ></a>
-              <div class="_submenu">
-                <ul>
-                  <li><a href="">Movies</a></li>
-                  <li><a href="">TV Shows</a></li>
-                </ul>
-              </div>
+                >Movie ratings </a>
             </li>
             <li class="_navitem">
-              <a href="#" class="_navlink"
-                >Watchlist <i class="fa fa-caret-down"></i
-              ></a>
-              <ul class="_submenu">
-                <li><a href="">Movies</a></li>
-                <li><a href="">TV Shows</a></li>
-              </ul>
+              <a href="#" class="_navlink watchlist_btn">Watchlist </a>
             </li>
           </div>
         </ul>
       </div>
+<<<<<<< HEAD
+    </section>
+    <section class="account_page_data">
+      <div class="container">
+        <div class="inner_block">
+          <div class="inner_content">
+            <div class="content">
+              <h2>Stats</h2>
+              <div class="stat_blocks row">
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Total Edits</h3>
+                  <h2 class="edit_data">0</h2>
+                </div>
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Total Ratings</h3>
+                  <h2 class="edit_data">0</h2>
+                </div>
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Rating Overviews</h3>
+=======
     </section>
     <section class="account_page_data">
       <div class="container">
@@ -139,12 +126,72 @@
                   <p>You haven't logged any movies or TV shows</p>
                 </div>
               </div>
+              <div class="data_from_watchlist">
+                  <h2 class="title_watchlist">Upcoming From Watchlist</h2>
+                  <p class="data_watchlist">There are no upcoming movies on your watchlist.</p>
+              </div>
+              <div class="discussions">
+                  <h2 class="discussion_title">Recent Discussions</h2>
+                  <p class="discussion_title">You are not watching any discussions.</p>
+              </div>
+              <div class="edits">
+                  <h2 class="edits_title">Recent Activity</h2>
+                  <p class="edits_data">You haven't made any recent edits.</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <section class="favourite">
+        <div class="container">
+            <div class="fav_header">
+                <h2 class="fav_title">My Favourites</h2>
+                <div>
+                    <span>Filter by Date added</span>
+                    <span>Order <i class="fas fa-download"></i> <i class="fas fa-search"></i></span>
+                </div>
+            </div>
+            <div class="fav_body">
+                <div class="fav_movie row">
+                    <div class="col-2">
+                        <img src="https://www.themoviedb.org/t/p/w150_and_h225_bestv2/fSbqPbqXa7ePo8bcnZYN9AHv6zA.jpg"
+                        alt="">
+                    </div>
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-1 rating">66%</div>
+                            <div class="col-8">
+                                <h4 class="movie_title">The Amazing Spider-Man</h4>
+                                <p>June 23, 2012</p>
+                            </div>
+                        </div>
+                        <p class="movie_info">Peter Parker is an outcast high schooler abandoned by his parents as a boy, leaving him to be raised by his Uncle Ben and Aunt May. Like most teenagers, Peter is trying to figure out who he is and how he got to be the person he is today. As Peter discovers a mysterious briefcase that belonged to his father, he begins a quest to understand his parents' disappearance – leading him directly to Oscorp and the lab of Dr. Curt Connors, his father's former partner. As Spider-Man is set on a collision</p>
+                        <div class="row">
+                            <div class="col-3"> <span class="icon_rating">10</span> Your rating</div>
+                            <div class="col-3"> <i class="fas fa-heart"></i> Favourite</div>
+                            <div class="col-3"><i class="fas fa-list-ul"></i> Add to list</div>
+                            <div class="col-3"><i class="fas icon-remove"></i> Remove</div>
+                        </div>
+                    </div>
+>>>>>>> 1be2dfab0cf1e78ec9326462be93945ba3a6993f
+                </div>
+                <div class="stat_block col-3">
+                  <h3 class="stat_title">Most Watched Genres</h3>
+                  <p>You haven't logged any movies or TV shows</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<<<<<<< HEAD
     <script type="module" src="./js/profile.js"></script>
+=======
+    <script type="module" src="./js/router.js"></script>
+>>>>>>> 1be2dfab0cf1e78ec9326462be93945ba3a6993f
   </body>
 </html>
