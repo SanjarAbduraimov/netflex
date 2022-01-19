@@ -81,6 +81,8 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(data, "Search");
       displaySearchResults(data);
     });
+    
+    
   }
   if (location.pathname === "/profile.html") {
     profile.fetchDetailsData().then((data) => {

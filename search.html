@@ -8,6 +8,7 @@
   <title>Netflex || The Movie Database</title>
   <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="./css/search.css">
 </head>
 
 <body>
@@ -82,14 +83,18 @@
         </a>
     </nav>
   </header>
+
   <section>
     <div class="container">
       <div class="row"></div>
       <div class="row">
-        <div class="col-2">
-          <h1>Sidebar</h1>
+        <div class="col-3">
+          <div class="card p-0 mt-5 text-center cards" >
+            
+
+          </div>
         </div>
-        <div class="col-10">
+        <div class="col-9" >
           <div class="row gy-4 searchResults">
             <div class="col-12">
               <div class="card">
@@ -134,9 +139,15 @@
               </div>
             </div>
           </div>
+          <nav aria-label="..." class="bg-body">
+            <ul class="pagination pagination-sm mx-auto">
+              
+            </ul>
+          </nav>
         </div>
       </div>
     </div>
+    
   </section>
   <script type="module" defer src="./js/router.js"></script>
 </body>
