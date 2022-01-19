@@ -1,7 +1,17 @@
 import { showLoader, hideLoader } from "./loader.js";
 import * as home from "./home.js";
 import * as movie from "./movie.js";
-import { displayArtist, displayCombinedCredits, displayKnownFor, fetchArtist, fetchCombinedCredits, fetchKnownFor,fetchInforms,displayInforms,movieHandler } from "./artist.js";
+import {
+  displayArtist,
+  displayCombinedCredits,
+  displayKnownFor,
+  fetchArtist,
+  fetchCombinedCredits,
+  fetchKnownFor,
+  fetchInforms,
+  displayInforms,
+  movieHandler,
+} from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
 import { displaySearchResults, fetchSearchMovie } from "./search.js";
 import * as profile from "./profile.js";
@@ -56,11 +66,11 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     fetchKnownFor().then((artist) => {
       displayKnownFor(artist);
-      movieHandler()
+      movieHandler();
     });
     fetchCombinedCredits().then((artist) => {
       displayCombinedCredits(artist);
-      movieHandler()
+      movieHandler();
     });
     fetchInforms().then((artist) => {
       displayInforms(artist);
@@ -69,10 +79,26 @@ document.addEventListener("DOMContentLoaded", () => {
   if (location.pathname === "/popularMovie.html") {
     popularMovie.fetchPopularMovie(popularMovie).then((data) => {
       popularMovie.displayPopularMovie(data);
+      popularMovie.searchHandler();
+      const cardOption = document.querySelector(".card__options");
+      console.log(cardOption);
+      const actions = document.querySelector(".hero__actions");
+      // popularMovie.popularMovieHandler();
+      console.log(actions);
+      cardOption.addEventListener("click", (e) => {
+        if (actions.style.display == "none!important") {
+          actions.style.display = "flex!important";
+        } else {
+          actions.style.display = "none!important";
+        }
+      });
       popularMovie.popularMovieHandler();
-      popularMovie.filterName();
-      popularMovie.filters();
-      popularMovie.toWatch();
+    });
+  }
+  if (location.pathname === "/profile.html") {
+    fetchArtist().then((artist) => {
+      hideLoader();
+      displayArtist(artist);
     });
   }
   if (location.pathname === "/search.html") {
@@ -81,8 +107,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log(data, "Search");
       displaySearchResults(data);
     });
-    
-    
   }
   if (location.pathname === "/profile.html") {
     profile.fetchDetailsData().then((data) => {

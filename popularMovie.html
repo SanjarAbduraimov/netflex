@@ -1,324 +1,334 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Popular Movie</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/popularMovie.css" />
-  </head>
-  <body>
-    <section class="hero">
-      <div class="container">
-        <div class="text-capitalize h4 my-4">popular movies</div>
-        <div class="row">
-          <div class="col-3">
-            <div class="filter__panel p-3 mb-3">
-              <div
-                class="filter__name text-capitalize fw-bold fs-5"
-                onclick="filterName()"
-              >
-                <span> sort </span>
-                <span>
-                  <i class="fas fa-chevron-right fs-6 fw-bold"></i>
-                </span>
-              </div>
-              <div class="filter">
-                <div class="filter__item lead fs-6 mb-2">Sort Results By</div>
-                <select class="p-2 fs-6 w-100">
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                </select>
-              </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Popular Movie</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="./assets/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="css/popularMovie.css" />
+</head>
+
+<body>
+  <section class="hero">
+    <div class="container">
+      <div class="text-capitalize h4 my-4">popular movies</div>
+      <div class="row">
+        <div class="col-3">
+          <form action="https://api.themoviedb.org/3/discover/movie" method="get" class="filter__panel p-3 mb-3">
+            <div class="filter__name text-capitalize fw-bold fs-5" data-bs-toggle="collapse" data-bs-target="#filter1"
+              aria-expanded="false" role="button">
+              <span> sort </span>
+              <span>
+                <i class="fas fa-chevron-right fs-6 fw-bold"></i>
+              </span>
+              <input type="text" hidden name="language" value="en-US">
+              <!-- <input type="text" hidden name="release_date.gte" value="2021"> --> -->
+              <!-- <input type="text" hidden name="release_date.lte" value="2021"> -->
+              <input type="text" hidden name="page" value="1">
+              <!-- <input type="text" hidden name="api_key" value="7014e2cdb739f65a296e51932f359f53"> -->
             </div>
-            <div class="filter__panel p-3 mb-3">
-              <div
-                class="filter__name filter__name-2 text-capitalize fw-bold fs-5"
-                onclick="filters()"
-              >
-                <span> filters </span>
-                <span>
-                  <i class="fas fa-chevron-right fs-6 fw-bold"></i>
-                </span>
-              </div>
-              <div class="filter filter2">
-                <div class="filter__item lead fs-6 mb-2">Show Me</div>
-                <select class="p-2 fs-6 w-100">
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                  <option value="popularityDescending">
-                    Popularity Descending
-                  </option>
-                </select>
-              </div>
+
+            <div class="filter" id="filter1">
+              <div class="filter__item lead fs-6 mb-2">Sort Results By</div>
+              <select name="sort_by" class="p-2 fs-6 w-100">
+                <option value="popularity.asc">
+                  Popularity Assending
+                </option>
+                <option value="popularity.desc">
+                  Popularity Descending
+                </option>
+                <option selected value="release_date.asc">
+                  Release date Ascending
+                </option>
+                <option value="release_date.desc">
+                  Release date Descending
+                </option>
+              </select>
             </div>
-            <div class="filter__panel p-3 mb-3">
-              <div
-                class="filter__name filter__name-3 text-capitalize fw-bold fs-5"
-                onclick="toWatch()"
-              >
-                <span> where to watch </span>
-                <span>
-                  <i class="fas fa-chevron-right fs-6 fw-bold"></i>
-                </span>
-              </div>
-              <div class="filter filter3">
-                <div class="filter__item lead fs-6 mb-2 text-capitalize">
-                  <span> my services </span>
-                  <a class="text-dark ms-1" href="#">
-                    <i class="fas fa-pen-square"></i>
-                  </a>
-                </div>
-                <label class="d-flex" for="">
-                  <input
-                    type="checkbox"
-                    class="m-1"
-                    name="checkbox"
-                    id="searchCheckbox"
-                  />
-                  <label for="searchCheckbox"
-                    >Restrict searches to my subscribed services?</label
-                  >
-                </label>
-                <hr>
-                <p class="text-capitalize">country</p>
-              </div>
+            <div class="release__date-wrapper">
+              <label for="releaseDateFrom">
+                releaseDateFrom
+                <input name="release_date.gte" type="date" value="01/01/2021">
+              </label>
+              <label for="releaseDateTo">
+                releaseDateTo
+                <input name="release_date.lte" type="date">
+              </label>
             </div>
-            <a
-              class="hero__link w-100 py-2 m-auto text-decoration-none text-capitalize fw-bold fs-5 d-flex align-items-center justify-content-center"
-              href="#"
-              >search</a
-            >
-          </div>
-          <div
-            class="hero__content col-9 d-flex flex-wrap justify-content-between"
-          >
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-1.jfif"
-                  alt="movie"
-                />
-              </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            <div class="language__wrapper">
+              <select name="language" class="p-2 fs-6 w-100">
+                <option selected value="en-US">
+                  English (US)
+                </option>
+              </select>
             </div>
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-2.jfif"
-                  alt="movie"
-                />
-              </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+
+            <button type="button">search</button>
+          </form>
+          <!-- <div class="filter__panel p-3 mb-3">
+            <div class="filter__name filter__name-2 text-capitalize fw-bold fs-5" data-bs-toggle="collapse"
+              data-bs-target="#filter2" aria-expanded="false" role="button">
+              <span> filters </span>
+              <span>
+                <i class="fas fa-chevron-right fs-6 fw-bold"></i>
+              </span>
             </div>
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-3.jfif"
-                  alt="movie"
-                />
-              </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+            <div class="filter collapse" id="filter2">
+              <div class="filter__item lead fs-6 mb-2">Availabilities</div>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox1" />
+                <label for="searchCheckbox1">Search all availabilities?</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox2" checked />
+                <label for="searchCheckbox2">Stream</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox3" checked />
+                <label for="searchCheckbox3">Free</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox4" checked />
+                <label for="searchCheckbox4">Ads</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox5" checked />
+                <label for="searchCheckbox5">Rent</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox6" checked />
+                <label for="searchCheckbox6">Buy</label>
+              </label>
+              <hr />
+              <div class="filter__item lead fs-6 mb-2">Release Dates</div>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox6" />
+                <label for="searchCheckbox6">Search all releases? </label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox7" checked />
+                <label for="searchCheckbox7">Search all countries?</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox7" checked />
+                <label for="searchCheckbox7">Premiere</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox8" checked />
+                <label for="searchCheckbox8">Theatrical (limited)</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox9" checked />
+                <label for="searchCheckbox9"> Theatrical</label>
+              </label>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox10" checked />
+                <label for="searchCheckbox10">Digital</label>
+              </label>
+              <label class="d-flex">
+                <span>form</span>
+                <input type="date" class="m-1 d-inline-block" name="checkbox" width="100px" height="20px" />
+              </label>
+              <label class="d-flex">
+                <span>to</span>
+                <input type="date" class="m-1 d-inline-block" name="checkbox" width="100px" height="20px"
+                  value="2022-07-17" />
+              </label>
+              <hr />
             </div>
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-4.jfif"
-                  alt="movie"
-                />
-              </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div> -->
+          <div class="filter__panel p-3 mb-3">
+            <div class="filter__name filter__name-3 text-capitalize fw-bold fs-5" data-bs-toggle="collapse"
+              data-bs-target="#filter3" aria-expanded="true" role="button">
+              <span> where to watch </span>
+              <span>
+                <i class="fas fa-chevron-right fs-6 fw-bold"></i>
+              </span>
             </div>
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-5.jfif"
-                  alt="movie"
-                />
+            <div class="filter collapse" id="filter3">
+              <div class="filter__item lead fs-6 mb-2 text-capitalize">
+                <span> my services </span>
+                <a class="text-dark ms-1" href="#">
+                  <i class="fas fa-pen-square"></i>
+                </a>
               </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
-            </div>
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-6.jfif"
-                  alt="movie"
-                />
-              </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
-            </div>
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-6.jfif"
-                  alt="movie"
-                />
-              </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
-            </div>
-            <div class="card mb-4">
-              <div class="card__img">
-                <img
-                  class="card__img-item w-100 h-100"
-                  src="./assets/img/movies/movie-8.jfif"
-                  alt="movie"
-                />
-              </div>
-              <div class="card__options">
-                <div class="card__options-item">
-                  <i class="fas fa-circle"></i>
-                  <i class="fas fa-ellipsis-h"></i>
-                </div>
-              </div>
-              <div class="card__link ms-3 mt-3">
-                <a
-                  class="card__link-item text-decoration-none fw-bold text-dark"
-                  href="#"
-                  >Resident Evil: Welcome to Raccoon City</a
-                >
-              </div>
-              <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+              <label class="d-flex">
+                <input type="checkbox" class="m-1" name="checkbox" id="searchCheckbox" />
+                <label for="searchCheckbox">Restrict searches to my subscribed services?</label>
+              </label>
+              <hr />
+              <p class="text-capitalize">country</p>
             </div>
           </div>
-          <div class="d-flex justify-content-end mb-5">
-            <a
-              class="hero__content-link d-flex align-items-center text-decoration-none justify-content-center w-75 py-3 bg-primary text-capitalize text-white"
-              href="#"
-              >load more</a
-            >
+          <a class="hero__link w-100 py-2 m-auto text-decoration-none text-capitalize fw-bold fs-5 d-flex align-items-center justify-content-center"
+            href="#">search</a>
+        </div>
+        <div class="hero__content col-9 d-flex flex-wrap justify-content-between">
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-1.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <ul class="hero__actions d-flex flex-column align-items-center list-unstyled bg-white">
+              <li class="me-4">
+                <a class="hero__actions-links add__to-list" href="#">
+                  <i class="fas fa-list text-dark"></i>
+                </a>
+              </li>
+              <li class="me-4 mark__as-favourite">
+                <a class="hero__actions-links" href="#">
+                  <i class="fas fa-heart text-dark"></i>
+                </a>
+              </li>
+              <li class="me-4 add__to-watchlist">
+                <span class="hero__actions-links">
+                  <i class="fas fa-bookmark text-dark"></i>
+                </span>
+              </li>
+              <li class="me-4">
+                <a class="hero__actions-links">
+                  <i class="fas fa-star text-dark"></i>
+                </a>
+              </li>
+            </ul>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div>
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-2.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div>
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-3.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div>
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-4.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div>
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-5.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div>
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-6.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div>
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-6.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
+          </div>
+          <div class="card mb-4">
+            <div class="card__img">
+              <img class="card__img-item w-100 h-100" src="./assets/img/movies/movie-8.jfif" alt="movie" />
+            </div>
+            <div class="card__options">
+              <div class="card__options-item">
+                <i class="fas fa-circle"></i>
+                <i class="fas fa-ellipsis-h"></i>
+              </div>
+            </div>
+            <div class="card__link ms-3 mt-3">
+              <a class="card__link-item text-decoration-none fw-bold text-dark" href="#">Resident Evil: Welcome to
+                Raccoon City</a>
+            </div>
+            <div class="card__date ms-3 mb-2">Nov 24, 2021</div>
           </div>
         </div>
+        <div class="d-flex justify-content-end mb-5">
+          <a class="hero__content-link d-flex align-items-center text-decoration-none justify-content-center w-75 py-3 bg-primary text-capitalize text-white"
+            href="#">load more</a>
+        </div>
       </div>
-    </section>
-    <script defer type="module" src="./js/router.js"></script>
-  </body>
+    </div>
+  </section>
+  <script src="./assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer type="module" src="./js/router.js"></script>
+</body>
+
 </html>
