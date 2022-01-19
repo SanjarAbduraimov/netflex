@@ -1,7 +1,7 @@
 import { showLoader, hideLoader } from "./loader.js";
 import * as home from "./home.js";
 import * as movie from "./movie.js";
-import { displayArtist, fetchArtist } from "./artist.js";
+import { displayArtist, displayCombinedCredits, displayKnownFor, fetchArtist, fetchCombinedCredits, fetchKnownFor,fetchInforms,displayInforms,movieHandler } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
 import { displaySearchResults, fetchSearchMovie } from "./search.js";
 
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
       hideLoader();
       movie.fetchIsFavouriteAndWatchlist(data.id).then((data) => {
         if (data.favorite) {
-          favBtn.style.color = "red";
+          favBtn.style.color = "purple";
         }
         if (data.watchlist) {
           watchBtn.style.color = "red";
@@ -52,6 +52,17 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchArtist().then((artist) => {
       hideLoader();
       displayArtist(artist);
+    });
+    fetchKnownFor().then((artist) => {
+      displayKnownFor(artist);
+      movieHandler()
+    });
+    fetchCombinedCredits().then((artist) => {
+      displayCombinedCredits(artist);
+      movieHandler()
+    });
+    fetchInforms().then((artist) => {
+      displayInforms(artist);
     });
   }
   if (location.pathname === "/popularMovie.html") {

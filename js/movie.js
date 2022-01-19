@@ -75,7 +75,7 @@ export async function markAsFavouriteHandler(e, movie_id) {
         .then((param) => {
           console.log(movie_id, param, "markAsFavouriteHandler2");
           if (param.success) {
-            e.target.style.color = "red";
+            e.target.style.color = "purple";
           } else {
             alert("Xatolik ");
           }
