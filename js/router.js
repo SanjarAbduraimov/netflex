@@ -1,52 +1,54 @@
 import { showLoader, hideLoader } from "./loader.js";
 import * as home from "./home.js";
 import * as movie from "./movie.js";
-import {
-  displayArtist,
-  fetchArtist,
-  fetchKnownFor,
-  displayKnownFor,
-  displayInforms,
-  fetchInforms,
-  fetchCombinedCredits,
-  displayCombinedCredits,
-  movieHandler,
-} from "./artist.js";
+import { displayArtist, fetchArtist } from "./artist.js";
+import * as popularMovie from "./popularMovie.js";
+import { displaySearchResults, fetchSearchMovie } from "./search.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", (e) => {
-      location.reload()
-  })
+    location.reload();
+  });
   if (location.pathname === "/" || location.pathname === "/index.html") {
     home.fetchPopularMovies().then((data) => {
       hideLoader();
       home.displayData(data);
       home.movieHandler();
+      home.searchMovieHandler(location, history);
       home.setCoverBg(data.results[0].backdrop_path);
     });
   }
   if (location.pathname === "/movie.html") {
     movie.fetchMovie(history.state.id).then((data) => {
+      const favBtn = document.querySelector(".fas.fa-heart");
       hideLoader();
-      movie.isFavourite(data.id);
+      movie.fetchIsFavourite(data.id).then((data) => {
+        if (data.favorite) {
+          favBtn.style.color = "red";
+        }
+      });
       movie.displayData(data);
-      const favouriteBtn = document.querySelector(".mark__as__favourite");
-      // favouriteBtn.onclick = (e) => {
-      //   movie.markAsFavouriteHandler(e);
-      // };
-      favouriteBtn.addEventListener("click",(e)=>{
+      const favouriteBtn = document.querySelector(".mark__as-favourite");
+
+      favouriteBtn.addEventListener("click", (e) => {
         e.preventDefault();
-        movie.markAsFavouriteHandler(e,data.id);
-      })
-      const watchlistBtn = document.querySelector(".add__to__watchlist");
+        movie.markAsFavouriteHandler(e, data.id);
+      });
+
+      // const watchlistBtn = document.querySelector(".add__to__watchlist");
+      // watchlistBtn.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   movie.addToWatchlistHandler(e);
+      // });
+
+      // const watchlistBtn = document.querySelector(".add__to__watchlist");
       // watchlistBtn.onclick = (e) => {
       //   movie.addToWatchlistHandler(e);
       // };
-      watchlistBtn.addEventListener("click",(e)=>{
-        e.preventDefault();
-        movie.addToWatchlistHandler(e);
-        
-      })
+      // watchlistBtn.addEventListener("click", (e) => {
+      //   e.preventDefault();
+      //   movie.addToWatchlistHandler(e);
+      // });
     });
     movie.fetchCredits(history.state.id).then((data) => {
       movie.displayCreditsData(data);
@@ -58,15 +60,26 @@ document.addEventListener("DOMContentLoaded", () => {
       hideLoader();
       displayArtist(artist);
     });
-    fetchKnownFor().then((artist) => {
-      displayKnownFor(artist);
+  }
+  if (location.pathname === "/popularMovie.html") {
+    popularMovie.fetchPopularMovie(popularMovie).then((data) => {
+      popularMovie.displayPopularMovie(data);
+      popularMovie.popularMovieHandler();
+      popularMovie.filterName();
+      popularMovie.filters();
+      popularMovie.toWatch();
     });
-    fetchInforms().then((artist) => {
-      displayInforms(artist);
+  }
+  if (location.pathname === "/search.html") {
+    console.log(history.state, "salom");
+    fetchSearchMovie(history.state.query).then((data) => {
+      console.log(data, "Search");
+      displaySearchResults(data);
     });
-    fetchCombinedCredits().then((artist) => {
-      displayCombinedCredits(artist);
-      movieHandler();
-    });
+    
+    
+  }
+  if (location.pathname === "/profile.html") {
+    profile.profileEvent();
   }
 });
