@@ -4,6 +4,7 @@ import * as movie from "./movie.js";
 import { displayArtist, displayCombinedCredits, displayKnownFor, fetchArtist, fetchCombinedCredits, fetchKnownFor,fetchInforms,displayInforms,movieHandler } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
 import { displaySearchResults, fetchSearchMovie } from "./search.js";
+import * as profile from "./profile.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("popstate", (e) => {
@@ -82,6 +83,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
   if (location.pathname === "/profile.html") {
+    profile.fetchDetailsData().then((data) => {
+      profile.DisplayDetails(data);
+    });
+    profile.getWatchList().then((watchlistData) => {
+      profile.displayData(watchlistData);
+    });
     profile.profileEvent();
   }
 });
