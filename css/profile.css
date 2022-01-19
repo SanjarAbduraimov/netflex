@@ -81,9 +81,33 @@ li {
 .stat_blocks{
     display: flex;
 }
-
+.stat_title{
+  font-size: 20px;
+}
 .edit_data{
     color: orange;
     font-size: 50px;
     font-weight: 700;
+}
+
+.fav_header{
+  display: flex;
+  justify-content: space-between;
+}
+
+.fav_movie{
+  border: 1px solid rgba(0, 0, 0, 0.87);
+  border-radius: 15px;
+}
+.rating{
+  border: 1px solid;
+  background-color: rgba(0, 0, 0, 0.767);
+  color: white;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.movie_title:hover{
+  color: aqua !important;
 }

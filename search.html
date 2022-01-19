@@ -2,18 +2,16 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Netflex || The Movie Database</title>
-  <link rel="stylesheet" href="./css/style.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"
-    integrity="sha512-1cK78a1o+ht2JcaW6g8OXYwqpev9+6GqOkz9xmBN9iUUhIndKtxwILGWYOSibOKjLsEdjyjZvYDq/cZwNeak0w=="
-    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-  <div class="loader">
+  <!-- <div class="loader">
     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
       style="margin: auto; background: rgb(255, 255, 255); display: block; shape-rendering: auto;" width="200px"
       height="200px" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid">
@@ -32,7 +30,7 @@
           repeatCount="indefinite"></animate>
       </circle>
     </svg>
-  </div>
+  </div> -->
   <header>
     <nav>
       <a href="/" class="logo">
@@ -83,57 +81,64 @@
           <span class="icon search"></span>
         </a>
     </nav>
-    <div class="hero">
-      <h1 class="hero__content">
-        <span>welcome.</span> <br />
-        <span>Millions of movies, TV shows and people to discover. Explore
-          now.</span><br />
-      </h1>
-      <form id="search__form" class="search__form" method="GET" accept-charset="utf-8">
-        <label for="search__movie">
-          <input type="search" id="search__movie" name="query" class="search__input"
-            placeholder="Search for a movie, tv show, person......" value />
-        </label>
-        <button class="submit__btn" type="submit">search</button>
-      </form>
-    </div>
   </header>
   <section>
-    <div class="row">
-      <h2>what's popular</h2>
-    </div>
-    <div class="row">
-      <div class="popular__movies">
-        <div class="card">
-          <img height="250" src="./assets/img/icons/img-thumbnail.svg" alt="moviezone" />
+    <div class="container">
+      <div class="row"></div>
+      <div class="row">
+        <div class="col-2">
+          <h1>Sidebar</h1>
         </div>
-        <div class="card">
-          <img height="250" src="./assets/img/icons/img-thumbnail.svg" alt="moviezone" />
-        </div>
-        <div class="card">
-          <img height="250" src="./assets/img/icons/img-thumbnail.svg" alt="moviezone" />
-        </div>
-        <div class="card">
-          <img height="250" src="./assets/img/icons/img-thumbnail.svg" alt="moviezone" />
-        </div>
-        <div class="card">
-          <img height="250" src="./assets/img/icons/img-thumbnail.svg" alt="moviezone" />
-        </div>
-        <div class="card">
-          <img height="250" src="./assets/img/icons/img-thumbnail.svg" alt="moviezone" />
+        <div class="col-10">
+          <div class="row gy-4 searchResults">
+            <div class="col-12">
+              <div class="card">
+                <div class="row">
+                  <div class="col-2"><img width="100%" src="./assets/img/movies/movie-1.jfif" alt="#"></div>
+                  <div class="col-10">
+                    <h3 class="h3">salom</h3>
+                    <p class="text-muted"></p>
+                    <p>After being bitten by a genetically altered spider at Oscorp, nerdy but endearing high school
+                      student
+                      Peter Parker is endowed with amazing powers to become the superhero known as Spider-Man.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card">
+                <div class="row">
+                  <div class="col-2"><img width="100%" src="./assets/img/movies/movie-1.jfif" alt="#"></div>
+                  <div class="col-10">
+                    <h3 class="h3">salom</h3>
+                    <p class="text-muted"></p>
+                    <p>After being bitten by a genetically altered spider at Oscorp, nerdy but endearing high school
+                      student
+                      Peter Parker is endowed with amazing powers to become the superhero known as Spider-Man.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-12">
+              <div class="card">
+                <div class="row">
+                  <div class="col-2"><img width="100%" src="./assets/img/movies/movie-1.jfif" alt="#"></div>
+                  <div class="col-10">
+                    <h3 class="h3">salom</h3>
+                    <p class="text-muted"></p>
+                    <p>After being bitten by a genetically altered spider at Oscorp, nerdy but endearing high school
+                      student
+                      Peter Parker is endowed with amazing powers to become the superhero known as Spider-Man.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </section>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"
-    integrity="sha512-A7AYk1fGKX6S2SsHywmPkrnzTZHrgiVT7GcQkLGDe2ev0aWb8zejytzS8wjo7PGEXKqJOrjQ4oORtnimIRZBtw=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script>
-    AOS.init({
-      duration: 500,
-    });
-  </script>
-  <script type="module" src="./js/router.js"></script>
+  <script type="module" defer src="./js/router.js"></script>
 </body>
 
 </html>

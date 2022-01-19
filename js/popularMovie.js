@@ -16,8 +16,8 @@ export function displayPopularMovie(data) {
   let card = document.querySelector(".hero__content");
   let htmlContent = "";
   data.results.forEach((data) => {
-  htmlContent += `
-    <div class="card mb-4"> 
+    htmlContent += `
+    <div class="card mb-4" data-id="${data.id}"> 
     <div class="card__img">
       <img
         class="card__img-item w-100 h-100"
@@ -34,7 +34,7 @@ export function displayPopularMovie(data) {
     <div class="card__link ms-3 mt-3">
       <a
         class="card__link-item text-decoration-none fw-bold text-dark"
-        href="#"
+        href="/movie.html"
         >${data.title}</a
       >
     </div>
@@ -45,30 +45,15 @@ export function displayPopularMovie(data) {
   card.innerHTML = htmlContent;
 }
 
-// let filterName = document.querySelector(".filter__name");
-
-// filterName.onclick =  () => {
-//   if ((filter.style.display = "none")) {
-//     filter.style.display = "block";
-//     document.querySelector(".filter__name fa-chevron-right").style.transform =
-//       "rotate(90deg)";
-//   } else if ((filter.style.display = "block")) {
-//     filter.style.display = "none";
-//     document.querySelector(
-//       ".filter__name span fa-chevron-right"
-//     ).style.transform = "rotate(0deg)";
-//   }
-// }
-
 export function filterName() {
   if ((filter.style.display = "none")) {
     filter.style.display = "block";
-    document.querySelector(".filter__name fa-chevron-right").style.transform =
+    document.querySelector(".filter__name .fa-chevron-right").style.transform =
       "rotate(90deg)";
   } else if ((filter.style.display = "block")) {
     filter.style.display = "none";
     document.querySelector(
-      ".filter__name span fa-chevron-right"
+      ".filter__name span .fa-chevron-right"
     ).style.transform = "rotate(0deg)";
   }
 }
@@ -76,12 +61,13 @@ export function filterName() {
 export function filters() {
   if ((filter2.style.display = "none")) {
     filter2.style.display = "block";
-    document.querySelector(".filter__name-2 fa-chevron-right").style.transform =
-      "rotate(90deg)";
+    document.querySelector(
+      ".filter__name-2 .fa-chevron-right"
+    ).style.transform = "rotate(90deg)";
   } else if ((filter2.style.display = "block")) {
     filter2.style.display = "none";
     document.querySelector(
-      ".filter__name-2 span fa-chevron-right"
+      ".filter__name-2 span .fa-chevron-right"
     ).style.transform = "rotate(0deg)";
   }
 }
@@ -89,12 +75,24 @@ export function filters() {
 export function toWatch() {
   if ((filter3.style.display = "none")) {
     filter3.style.display = "block";
-    document.querySelector(".filter__name-3 fa-chevron-right").style.transform =
-      "rotate(90deg)";
+    document.querySelector(
+      ".filter__name-3 .fa-chevron-right"
+    ).style.transform = "rotate(90deg)";
   } else if ((filter3.style.display = "block")) {
     filter3.style.display = "none";
     document.querySelector(
-      ".filter__name-3 span fa-chevron-right"
+      ".filter__name-3 span .fa-chevron-right"
     ).style.transform = "rotate(0deg)";
   }
+}
+
+export function popularMovieHandler() {
+  let movies = document.querySelectorAll(".card");
+  movies.forEach((movie) => {
+    movie.onclick = (e) => {
+      let id = e.target.parentElement.dataset.id;
+      history.pushState({ id }, "movie", "/movie.html");
+      location.reload();
+    };
+  });
 }
