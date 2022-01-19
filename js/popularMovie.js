@@ -77,6 +77,31 @@ export function displayPopularMovie(data) {
   card.innerHTML = htmlContent;
 }
 
+export async function searchPopularMovieReq(queryParams) {
+  // const url = `${BACKEND_API}discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`;
+  const url = `${BACKEND_API}discover/movie?api_key=${API_KEY}&${queryParams}`;
+  //
+
+  const res = await fetch(url);
+  const popularMovie = await res.json();
+  return popularMovie;
+}
+
+export async function searchHandler() {
+  const form = document.querySelector(".filter__panel");
+  const formData = new FormData(form);
+  const params = new URLSearchParams();
+  for (let pair of formData.entries()) {
+    params.append(pair[0], pair[1]);
+  }
+  console.log(params.toString(), "malumot");
+  searchPopularMovieReq(params.toString()).then((data) => {
+    console.log(data);
+    displaySearchResult(data);
+  });
+}
+export async function displaySearchResult(data) {}
+
 // export function cardOptions() {
 //   cont
 // }
