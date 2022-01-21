@@ -50,7 +50,7 @@ export function displayKnownFor(data) {
     data.cast.forEach((data) => {
         htmlContent += `<li style="cursor: pointer;">
         <img class="qwerty" height="200 "data-id = "${data.id} "
-          src=" https://www.themoviedb.org/t/p/w500${data.poster_path} "
+          src="${data.poster_path?IMG_URL + data.poster_path:"https://via.placeholder.com/130x200"}"
           alt="moviezone " />
         <h3 class="img__title">${data.title}</h3>
         </li>`
@@ -64,7 +64,7 @@ export function displayArtist(data) {
     let htmlContentt = ""
     htmlContent += `
     <div class="card">
-    <img height="500" src="${IMG_URL}${data.profile_path}" alt="moviezone" />
+    <img height="500" src="${data.profile_path?IMG_URL + data.profile_path:"https://via.placeholder.com/300x500"}" alt="moviezone" />
     </div>
       <div class="personal-informs">
       <h3>Personal Info</h3>

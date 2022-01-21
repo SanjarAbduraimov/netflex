@@ -34,7 +34,6 @@ export function displayData(data) {
   });
   popularMoviesDom.innerHTML = htmlContent;
 }
-
 export function setCoverBg(img) {
   const heroDom = document.querySelector(".hero");
   heroDom.style.setProperty("--coverBg", `url(${IMG_URL}${img})`);
