@@ -115,10 +115,14 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (location.pathname === "/profile.html") {
     profile.fetchDetailsData().then((data) => {
+      hideLoader();
       profile.DisplayDetails(data);
     });
     profile.getWatchList().then((watchlistData) => {
-      profile.displayData(watchlistData);
+      profile.displayWatchlistData(watchlistData);
+    });
+    profile.getFavourite().then((FavouriteData) => {
+      profile.displayFavouriteData(FavouriteData);
     });
     profile.profileEvent();
   }
