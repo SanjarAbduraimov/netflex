@@ -13,7 +13,11 @@ import {
   movieHandler,
 } from "./artist.js";
 import * as popularMovie from "./popularMovie.js";
-import { displaySearchResults, fetchSearchMovie } from "./search.js";
+import {
+  displaySearchResults,
+  fetchSearchMovie,
+  paginationHandler,
+} from "./search.js";
 import * as profile from "./profile.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -103,9 +107,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
   if (location.pathname === "/search.html") {
     console.log(history.state, "salom");
-    fetchSearchMovie(history.state.query).then((data) => {
+    fetchSearchMovie(history.state.query, history.state?.page).then((data) => {
       console.log(data, "Search");
       displaySearchResults(data);
+      paginationHandler(history, location);
     });
   }
   if (location.pathname === "/profile.html") {

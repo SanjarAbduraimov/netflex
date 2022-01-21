@@ -4,32 +4,27 @@ const { API_KEY, BACKEND_API, IMG_URL, DEFAULT_IMG, SESSION_ID } = configs;
 
 export async function fetchSearchMovie(query, page = 1) {
   const url = `${BACKEND_API}search/movie?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=false`;
-  console.log(url, "fghjtrertyu");
   const res = await fetch(url);
   const data = await res.json();
   return data;
 }
 
 export function displaySearchResults(data) {
-  const { results,total_results } = data;
+  const { results, total_results, total_pages, page } = data;
   const searchResult = document.querySelector(".searchResults");
-  const paginations = document.querySelector(".pagination")
-  displaySearchResults2(total_results)
-  let html = "",index=2;
+  const paginations = document.querySelector(".pagination");
+  displaySearchResults2(total_results);
+  let html = "";
 
-  let pagination = `
-  <li data-id="${1}" class="page-item active" aria-current="page">
-  <span class="page-link">1</span>
-  </li>
-`;
+  let pagination = "";
 
-for(let i=2;i<=data.total_pages;i++){
-  pagination+=`
-  <li data-id="${index}" class="page-item"><a class="page-link" href="#">${i}</a></li>
-  `
-}
-
-index++;
+  for (let i = 1; i <= data.total_pages; i++) {
+    pagination += `
+    <li data-id="${i}" class="page-item ${
+      i === page ? "active" : ""
+    }"><span class="page-link">${i}</span></li>
+    `;
+  }
 
   results?.forEach((movie) => {
     const { id, title, overview, release_date, poster_path } = movie;
@@ -51,7 +46,7 @@ index++;
   });
   searchResult.innerHTML = html;
   paginations.innerHTML = pagination;
-  movieHandler1()
+  movieHandler1();
 }
 
 export function movieHandler1() {
@@ -64,22 +59,34 @@ export function movieHandler1() {
     };
   });
 }
-export function thisPagination() {
-  let page = document.querySelectorAll(".page-item");
-  page.forEach((movie) => {
-    page.onclick = (e) => {
-      let id = e.target.dataset.id;
-      history.pushState({ id }, "movie", "/movie.html");
+export function paginationHandler(history, location) {
+  let pageNodeList = document.querySelectorAll(".page-item");
+  console.log(history.state, "state");
+  pageNodeList.forEach((item) => {
+    item.onclick = (e) => {
+      let element = e.target;
+      let paginationWrapperElement = element.closest("[data-id]");
+      let page = paginationWrapperElement.dataset.id;
+      console.log(page, "page");
+      history.replaceState(
+        { query: history.state.query, page },
+        "search",
+        "/search.html"
+      );
       location.reload();
+
+      // fetchSearchMovie(query, page).then((data) => {
+      //   console.log("");
+      //   displaySearchResults(data);
+      // });
     };
   });
 }
 
-
 export function displaySearchResults2(total_results) {
   const searchResult = document.querySelector(".cards");
   console.log(total_results);
-  
+
   let html = `
   <div class="card-header text-white bg-primary" style="font-size: 2rem;">Search Results</div>
   <ul class=" card-body text-start">
@@ -92,7 +99,5 @@ export function displaySearchResults2(total_results) {
     <li class="list-group-item" style="cursor: pointer; display: flex; justify-content: space-between;">Networks<span class=" badge rounded-pill bg-primary">Primary</span></li>
   </ul>
   `;
-  ;
   searchResult.innerHTML = html;
 }
-

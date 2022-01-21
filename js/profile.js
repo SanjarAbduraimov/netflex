@@ -31,11 +31,11 @@ export async function profileEvent() {
     if (e.target.classList.contains("watchlist_btn")) {
       console.log("getwatch");
       getWatchList().then((data) => {
-        displayData(data)
+        displayData(data);
       });
     }
   });
-  displayData()
+  displayData();
 }
 
 export function displayData(watchlistData) {
