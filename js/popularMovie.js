@@ -80,8 +80,6 @@ export function displayPopularMovie(data) {
 export async function searchPopularMovieReq(queryParams) {
   // const url = `${BACKEND_API}discover/movie?api_key=${API_KEY}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=${page}&with_watch_monetization_types=flatrate`;
   const url = `${BACKEND_API}discover/movie?api_key=${API_KEY}&${queryParams}`;
-  //
-
   const res = await fetch(url);
   const popularMovie = await res.json();
   return popularMovie;
@@ -100,66 +98,16 @@ export async function searchHandler() {
     displaySearchResult(data);
   });
 }
+
 export async function displaySearchResult(data) {}
-
-// export function cardOptions() {
-//   cont
-// }
-
-// export function filterName() {
-//   if ((filter.style.display = "none")) {
-//     filter.style.display = "block";
-//     document.querySelector(".filter__name .fa-chevron-right").style.transform =
-//       "rotate(90deg)";
-//   } else if ((filter.style.display = "block")) {
-//     filter.style.display = "none";
-//     document.querySelector(
-//       ".filter__name span .fa-chevron-right"
-//     ).style.transform = "rotate(0deg)";
-//   }
-// }
-
-// export function filters() {
-//   if ((filter2.style.display = "none")) {
-//     filter2.style.display = "block";
-//     document.querySelector(
-//       ".filter__name-2 .fa-chevron-right"
-//     ).style.transform = "rotate(90deg)";
-//   } else if ((filter2.style.display = "block")) {
-//     filter2.style.display = "none";
-//     document.querySelector(
-//       ".filter__name-2 span .fa-chevron-right"
-//     ).style.transform = "rotate(0deg)";
-//   }
-// }
-
-// export function watch() {
-//   let filter = document.querySelector(".filter");
-//   // toWatch.addEventListener("click", (e) => {
-//   //   e.preventDefault;
-//   //   if ((filter3.style.display = "none")) {
-//   //     filter3.style.display = "block";
-//   //     document.querySelector(
-//   //       ".filter__name-3 .fa-chevron-right"
-//   //     ).style.transform = "rotate(90deg)";
-//   //   } else {
-//   //     filter3.style.display = "none";
-//   //     document.querySelector(
-//   //       ".filter__name-3 .fa-chevron-right"
-//   //     ).style.transform = "rotate(90deg)";
-//   //   }
-//   // });
-//   // var coll = document.getElementsByClassName("collapsible");
-
-// }
 
 export function popularMovieHandler() {
   let movies = document.querySelectorAll(".card");
   movies.forEach((movie) => {
     movie.onclick = (e) => {
       let element = e.target;
-      let artistWrapperElement = element.closest("[data-id]");
-      let id = artistWrapperElement.dataset.id;
+      let popularMovieWrapperElement = element.closest("[data-id]");
+      let id = popularMovieWrapperElement.dataset.id;
       history.pushState({ id }, "movie", "/movie.html");
       location.reload();
     };
